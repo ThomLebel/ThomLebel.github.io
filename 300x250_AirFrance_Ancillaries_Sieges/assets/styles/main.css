@@ -1,0 +1,390 @@
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, a, em, img, s, strong, sub, sup, b, u, i, dl, dt, dd, ol, ul, li, form, label, table, tbody, tfoot, thead, tr, th, td, article, aside, canvas, embed, footer, header, menu, nav, section, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    /*will-change : transform;*/
+}
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+#global {
+    color: #ed257c;
+    margin:0;
+    padding: 0;
+    line-height: 100%;
+    width: 300px;
+    height: 250px;
+    top: 0px;
+    left: 0px;
+    overflow: hidden;
+    background-color: #FFCE1E;
+    text-align: center;
+    font-family: "Excellence In Motion", sans-serif;
+    font-weight: bold;
+    position: absolute;
+    text-transform: uppercase;
+    opacity: 0;
+}
+ol, ul {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+    color: inherit;
+}
+blockquote, q {
+    quotes: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+
+.border-top, .border-bottom, #first_cache, #big_img,
+#stripright, #strip2right, #strip3right, #strip4right,
+#skew2right, #skew3right, #skew4right ,
+#skew2left, #skew3left, #skew4left,
+#stripleft, #strip2left, #strip3left, #strip4left,
+#second_cache, #second_cache1, #third_cache, #four_cache, #five_cache,
+#second_cache_skew_left, #second_cache_skew_right,
+#second_cache1_skew_left, #second_cache1_skew_right,
+#third_cache_skew_left, #third_cache_skew_right,
+#four_cache_skew_left, #four_cache_skew_right,
+#five_cache_skew_left, #five_cache_skew_right
+{
+    -webkit-transform: skewX(-45deg);
+    -moz-transform: skewX(-45deg);
+    -ms-transform: skewX(-45deg);
+    -o-transform: skewX(-45deg);
+    transform: skewX(-45deg);
+}
+
+#cadre {
+    width:300px;
+    height: 250px;
+    overflow: hidden;
+    position: absolute;
+    pointer-events: none;
+}
+
+.border-top {
+    position: absolute;
+    height : 30px;
+    width: 120%;
+    top:0;
+    right:-15px;
+    z-index: 1000;
+}
+
+.border-bottom {
+    position: absolute;
+    height: 10px;
+    width: 120%;
+    bottom: 0;
+    left: -15px;
+    z-index: 1000;
+}
+
+.border-left {
+    position: absolute;
+    height : 100%;
+    width: 10px;
+    top:0px;
+    left:0px;
+    overflow: hidden;
+    z-index: 1000;
+}
+
+.border-right  {
+    position: absolute;
+    height: 100%;
+    width: 10px;
+    bottom: 0px;
+    right: 0px;
+    overflow: hidden;
+    z-index: 1000;
+}
+#stripright, #strip2right, #strip3right, #strip4right {
+    position: absolute;
+    height: 100%;
+    width: 0px;
+    bottom: 90px;
+    right: 0px;
+    overflow: hidden;
+}
+
+#skew2right, #skew3right, #skew4right {
+    position: absolute;
+    height: 100%;
+    width: 260px;
+    bottom: 0px;
+    right: -120px;
+    overflow: hidden;
+}
+#skew2left, #skew3left, #skew4left {
+    position: absolute;
+    height: 100%;
+    width: 260px;
+    top: 0px;
+    right: -120px;
+    overflow: hidden;
+}
+
+#stripleft, #strip2left, #strip3left, #strip4left {
+    position: absolute;
+    height: 100%;
+    width: 0px;
+    bottom: -100px;
+    right: 0px;
+    overflow: hidden;
+}
+
+#second_cache1, #second_cache1_skew_left, #second_cache1_skew_right  {
+    background-color: #19457d;
+}
+
+#strip2right.four, #strip2left.four, #second_cache, #second_cache_skew_left, #second_cache_skew_right  {
+    background-color: #19457d;
+
+}
+
+#strip3right.sixth, #strip3left.sixth, #third_cache, #third_cache_skew_left, #third_cache_skew_right  {
+    background-color: #19457d;
+}
+#strip4right.eigth, #strip4left.eigth, #four_cache, #four_cache_skew_left, #four_cache_skew_right, #five_cache, #five_cache_skew_left, #five_cache_skew_right  {
+    background-color: #19457d;
+}
+
+#skew2right , #skew2left, #skew3right , #skew3left, #skew4right , #skew4left {
+    height : 0%;
+}
+#b2top , #b2bot, #b3top , #b3bot, #b4top , #b4bot {
+    width : 0%;
+}
+.first{
+    background-color: #ed257c;
+
+    color: #19457d;
+}
+.second{
+    background-color: #19457d;
+
+    color: #ed257c;
+}
+
+#logo {
+    width: 175px;
+    height: 15px;
+    position: absolute;
+    right: 10px;
+    z-index: 10;
+    top: 7px;
+    z-index: 10000;
+}
+
+#first_content{
+    position: absolute;
+    width: 1622px;
+    height: 1436px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    -o-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+    background-color: #F9B200;
+}
+
+#siegeContainer{
+    position: absolute;
+    width: 1523px;
+    height: 216px;
+    top: 620px;
+    left:-556px;
+}
+
+.siege{
+    position: absolute;
+    top: 25px;
+    left: 0px;
+}
+
+#barContainer{
+    position: absolute;
+    width: 100%;
+    height:100%;
+    top:0px;
+    left:0px;
+    background-color:#ffdf4f;
+    overflow: hidden;
+}
+
+.bar{
+    position: absolute;
+    width:8px;
+    height:100%;
+    top:0px;
+    left:0px;
+    background-color:white;
+    transform-origin: 300% center;
+}
+
+#girl {
+    position: absolute;
+    left: 50%;
+    top: 36%;
+    transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    -o-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+}
+
+#bg{
+    position: absolute;
+    top:0px;
+    left:50%;
+    transform: translate(-50%,0);
+    -webkit-transform: translate(-50%,0);
+    -o-transform: translate(-50%,0);
+    -moz-transform: translate(-50%,0);
+}
+
+#sparks{
+    position: absolute;
+    top: 100px;
+    left: 615px;
+    transform: rotate(90deg);
+}
+
+
+#second_cache, #second_cache1, #third_cache, #four_cache, #five_cache {
+    position: absolute;
+    width: 0px;
+    height: 815px;
+    top: 30px;
+    left: -150px;
+    overflow: hidden;
+}
+
+#second_cache1_skew_left, #second_cache1_skew_right,#second_cache_skew_left, #second_cache_skew_right, #third_cache_skew_left, #third_cache_skew_right, #four_cache_skew_left, #four_cache_skew_right, #five_cache_skew_left, #five_cache_skew_right {
+    position: absolute;
+    width: 250px;
+    height: 210px;
+    top: 30px;
+    z-index: 6;
+    overflow: hidden;
+    opacity: 0;
+}
+
+#second_cache1_skew_left, #second_cache_skew_left, #third_cache_skew_left, #four_cache_skew_left, #five_cache_skew_left {
+    left: 150px;
+    pointer-events: none;
+}
+
+#second_cache1_skew_right,#second_cache_skew_right, #third_cache_skew_right, #four_cache_skew_right, #five_cache_skew_right {
+    left: -99px;
+}
+#content_second1,#content_second, #content_third, #content_four, #content_five {
+    position: absolute;
+    width: 280px;
+    height: 210px;
+    left: 10px;
+    top: 30px;
+    opacity: 0;
+
+}
+
+#nada {
+    position: absolute;
+    width: 280px;
+    height: 60px;
+    left: 0px;
+    top: 50%;
+    margin-top: -30px;
+    font-size: 22px;
+    line-height: 140%;
+    font-family: "Excellence In Motion", sans-serif;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 900;
+}
+
+.txt{
+    position: relative;
+    width: 280px;
+    height: auto;
+    top: 44px;
+    text-align: center;
+    margin-top: 2px;
+    font-family: "Excellence In Motion", sans-serif;
+    text-transform: uppercase;
+    font-size: 14px;
+    -webkit-transform: translate3d(0,0,0);
+    -moz-transform: translate3d(0,0,0);
+    -ms-transform: translate3d(0,0,0);
+    -o-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+}
+
+#txt2{
+    top:31%;
+}
+
+.button {
+    position: relative;
+    margin: 0 auto;
+    width: 95px;
+    height: 25px;
+    margin-top: 80px;
+    top: 8px;
+}
+.button .button-bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+.button span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    line-height: 24px;
+    font-size: 11px;
+    width: 100%;
+    text-transform: uppercase;
+}
+
+.business {
+    position: absolute;
+    width: auto;
+    text-align: center;
+    top: 25px;
+    left: 50%;
+    font-weight: 900;
+    font-size: 22px;
+    transform: translate(-50%,0);
+    padding: 5px;
+    font-family: "Excellence In Motion", sans-serif;
+    text-transform: uppercase;
+}
+#sign {
+    position: relative;
+    top: -6px;
+}
+
+#contour {
+    position:absolute;
+    width: calc(100% - 2px);
+    height: calc(100% - 2px);
+    left:0px;
+    top:0px;
+    border:1px solid black;
+    z-index: 3000;
+    pointer-events: none;
+}

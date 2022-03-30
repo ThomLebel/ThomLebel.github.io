@@ -1,0 +1,205 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+body {
+    margin: 0px;
+}
+b{
+    font-size:13px;
+    font-weight: bold;
+}
+#ad {
+    display: block;
+    overflow: hidden;
+    width: 800px;
+    height: 600px;
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    opacity: 0;
+    cursor:pointer;
+}
+#banner {
+    position: absolute;
+    display: block;
+    width: 800px;
+    height: 600px;
+    background-color: #f4f7fc;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+#logo, #mention, #mention2,
+#txt1, #txt2, #txt3, #img1, #black, #footer {
+    position:absolute;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left:0px;
+}
+
+#logo { background-image: url("../img/logo.png"); }
+#footer { background-image: url("../img/footer.png"); }
+#img1 { background-image: url("../img/img1.jpg"); }
+#txt1 { background-image: url("../img/txt1.png"); }
+#txt2 { background-image: url("../img/txt2.png"); }
+#txt3 { background-image: url("../img/txt3.png"); }
+#mention { background-image: url("../img/mention.png"); }
+#mention2 { background-image: url("../img/mention2.png");}
+#black{background-color: black;}
+
+#cta {
+    position: absolute;
+    width: 302px;
+    height: 45px;
+    top: 357px;
+    left: 248px;
+    overflow: hidden;
+    background-image: url(../img/cta.png);
+}
+
+#reflet {
+    position: absolute;
+    width: 728px;
+    height: 47px;
+    top: 0px;
+    left: -600%;
+    background: -moz-linear-gradient(-45deg,  rgba(255,255,255,0) 0%, rgba(255,255,255,0) 50%, rgba(255,255,255,1) 52%, rgba(255,255,255,0) 100%);
+    background: -webkit-linear-gradient(-45deg,  rgba(255,255,255,0) 0%,rgba(255,255,255,0) 50%,rgba(255,255,255,1) 52%,rgba(255,255,255,0) 100%);
+    background: linear-gradient(135deg,  rgba(255,255,255,0) 0%,rgba(255,255,255,0) 50%,rgba(255,255,255,1) 52%,rgba(255,255,255,0) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#00ffffff',GradientType=1 );
+}
+
+#mentionDiv{
+    position: absolute;
+    width: 200px;
+    height: 24px;
+    top: 420px;
+    left: 301px;
+    display: none;
+    z-index: 100;
+}
+
+#condition{
+    position: absolute;
+    width: calc(100% - 12px);
+    height: calc(100% - 52px);
+    top: 0px;
+    left: 0px;
+    color: black;
+    font-size: 14px;
+    font-weight: 600;
+    background-color: white;
+    padding-top: 50px;
+    padding-left: 5px;
+    padding-right: 5px;
+    letter-spacing: 0.9px;
+    line-height: 490px;
+    text-align: center;
+    opacity: 0;
+    z-index: 1000;
+    display: none;
+    border: 1px solid black;
+}
+
+#conditionText{
+    display: inline-block;
+    vertical-align: middle;
+    line-height: normal;
+}
+
+#titre{
+    font-size: 18px;
+    font-weight:bold;
+}
+#closeMention{
+    position: absolute;
+    width:20px;
+    height:20px;
+    top:16px;
+    right:16px;
+    background-image:url("../img/close.png");
+    z-index:100;
+}
+
+#contour {
+    position:absolute;
+    width: calc(100% - 2px);
+    height: calc(100% - 2px);
+    left:0px;
+    top:0px;
+    border:1px solid black;
+}
+
+
+.slidecontainer {
+    position: absolute;
+    width: 388px;
+    height: 100%;
+    top: 0px;
+    left: 50%;
+    margin-left: -194px;
+    /* z-index: 100;*/
+}
+
+#prix{
+    position: absolute;
+    width: 100px;
+    top: 176px;
+    left: 200px;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+/* The slider itself */
+.slider {
+    background-color: white;
+    width: 388px;
+    height:4px; 
+    top:250px;
+    overflow:visible; 
+    padding:0; 
+    position:relative;
+}
+
+/* The slider handle (use webkit (Chrome, Opera, Safari, Edge) and moz (Firefox) to override default look) */ 
+.knob{
+    background-color: white;
+    text-align: center;
+    font-family: Asap, Avenir, Arial, sans-serif;
+    width: 24px;
+    height: 24px;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    line-height: 100px;
+    color: black;
+    position: absolute;
+    top:-12px;
+    z-index:2;
+    border: 2px solid #005aab;
+}
+
+
+/*Scrollbar style */
+.style-bar::-webkit-scrollbar-track
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    background-color: #F5F5F5;
+}
+
+.style-bar::-webkit-scrollbar
+{
+    width: 6px;
+    background-color: #F5F5F5;
+}
+
+.style-bar::-webkit-scrollbar-thumb
+{
+    background-color: #000000;
+}

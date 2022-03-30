@@ -1,0 +1,217 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>970x250</title>
+        <meta name="ad.size" content="width=970,height=250">
+        <style>
+            body, html {
+                position: absolute;
+                left: 0px;
+                top: 0px;
+                width: 970px;
+                height: 250px;
+                overflow:hidden;
+                margin: 0;
+            }
+            #nissan {
+                position: absolute;
+                width: 100%;
+                height:100%;
+                top: 0px;
+                left: 0px;
+                display: block;
+                overflow: hidden;
+                background-color: white;
+                cursor:pointer;
+                opacity: 0;
+            }
+            #cta, #txt1, #txt2 {
+                position: absolute;
+                left: 0px;
+                top: 0px;
+                width: 100%;
+                height: 100%;
+                background-repeat:no-repeat;
+            }
+            #txt1 { background-image: url(txt1.png);}
+            #txt2 { background-image: url(txt2.png);}
+            #cta { background-image: url(cta.png);}
+
+            #icon {
+                position: absolute;
+                width: 80px;
+                top: 170px;
+                left: 670px;
+                z-index: 1;
+                transform-origin:center bottom;
+                /*transform:rotate(30deg);*/
+                transform: translate(30px);
+            }
+
+            #logo{
+                position: absolute;
+                top: 157px;
+                left: 875px;
+                width: 75px;
+                height: 93px;
+                background-image: url(logo.png);
+                z-index:1;
+            }
+            #logo2{
+                position: absolute;
+                top:20px;
+                left:862px;
+                width:87px;
+                height:11px;
+                background-image: url(logo2.png);
+                z-index:1;
+            }
+            #mask{
+                position: absolute;
+                width: 522px;
+                height: 100%;
+                top: 0px;
+                right: -40px;
+                transform: skew(-18deg);
+                overflow: hidden;
+                z-index: 1;
+            }
+            #MYT_threesixty_0 {
+                position: absolute;
+                height: 250px;
+                left: -50px;
+                opacity: 1;
+                top: 0%;
+                width: 536px;
+                transform: rotate(0deg) scaleX(1) scaleY(1) skew(18deg);
+            }
+
+            #zoneClick{
+                position: absolute;
+                width: 278px;
+                height: 47px;
+                top: 172px;
+                left: 30px;
+            }
+
+            #contour {
+                position:absolute;
+                width: calc(100% - 2px);
+                height: calc(100% - 2px);
+                left:0px;
+                top:0px;
+                border:1px solid black;
+                z-index:2;
+                pointer-events: none;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="nissan">
+            <div id="mask">
+                <div id="MYT_threesixty_0">
+                    <div id="MYT_threesixty_0_circlr">
+                        <img src="vid01.jpg" />
+                        <img src="vid02.jpg" />
+                        <img src="vid03.jpg" />
+                        <img src="vid04.jpg" />
+                        <img src="vid05.jpg" />
+                        <img src="vid06.jpg" />
+                        <img src="vid07.jpg" />
+                        <img src="vid08.jpg" />
+                        <img src="vid09.jpg" />
+                        <img src="vid10.jpg" />
+                        <img src="vid11.jpg" />
+                        <img src="vid12.jpg" />
+                        <img src="vid13.jpg" />
+                        <img src="vid14.jpg" />
+                        <img src="vid15.jpg" />
+                        <img src="vid16.jpg" />
+                        <img src="vid17.jpg" />
+                        <img src="vid18.jpg" />
+                        <img src="vid19.jpg" />
+                        <img src="vid20.jpg" />
+                        <img src="vid21.jpg" />
+                        <img src="vid22.jpg" />
+                        <img src="vid23.jpg" />
+                        <img src="vid24.jpg" />
+                    </div>
+                </div>
+            </div>
+
+            <img id="icon" src="icon.png" />
+
+            <div id="txt1"></div>
+            <div id="txt2"></div>
+            <div id="cta"></div>
+            <div id="zoneClick"></div>
+            <div id="logo"></div>
+            <div id="logo2"></div>
+
+            <div id="contour"></div>
+        </div>
+    </body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.2/TweenMax.min.js"></script>
+    <script src="360.js"></script>
+    <script>
+        var clickTag = "http://www.google.com";
+        var tl = new TimelineLite();
+        var autoplayCount = 0;
+        var _360, _autoPlay, dir;
+        var tlIcon = new TimelineMax(/*{repeat:1, onComplete:hideIcon }*/);
+        
+        window.onload = function(){
+            document.getElementById("mask").addEventListener("mousedown", hideIcon);
+            document.getElementById("zoneClick").addEventListener("click", clickthrough);
+
+            _360 = circlr(document.querySelector('#MYT_threesixty_0_circlr')).interval(100).scroll(false);
+            _autoPlay = setInterval(autoPlay, 100);
+            dir = 1;
+
+            tl.to(nissan, 0.2, {opacity:1});
+
+            // tl.from(txt1, 1, {opacity:0});
+            // tl.from(txt2, 1, {opacity:0}, "-=0.5");
+            // // tl.from(txt2, 1, {opacity:0, onComplete:display360}, "-=0.5");
+            // tl.from(cta, 1, {opacity:0});
+
+            tlIcon.to(icon, 0.5, {ease:Power2.easeOut, x:"-30px"});
+            tlIcon.to(icon, 0.5, {ease:Power2.easeOut, x:"30px", onComplete:hideIcon});
+            tlIcon.to(icon, 0.5, {ease:Power2.easeOut, x:"-30px" });
+        }
+
+        // function display360(){
+        //     // document.getElementById("visuel1").style.display = "none";
+        //     _360 = circlr(document.querySelector('#MYT_threesixty_0_circlr')).interval(100).scroll(false).play();
+        // }
+
+        function autoPlay(){
+            if(dir === 1){
+                _360.next();
+            }else{
+                _360.prev();
+            }
+            autoplayCount += dir;
+            if(autoplayCount === 5){
+                dir = -1;
+            }
+            if(autoplayCount === 0){
+                dir = 1;
+            }
+        }
+
+        function hideIcon(){
+            clearInterval(_autoPlay);
+            document.getElementById("mask").removeEventListener("mousedown", hideIcon);
+            TweenMax.to(icon, 1, {opacity:0, onComplete:function(){
+                tlIcon.pause();
+                document.getElementById("icon").style.display = "none";
+            }});
+        }
+
+        function clickthrough(){
+            window.open(window.clickTag, "_blank");
+        }
+    </script>
+</html>

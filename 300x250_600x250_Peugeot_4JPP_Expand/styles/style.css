@@ -1,0 +1,165 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+body {
+    margin: 0px;
+}
+#container {
+    position: absolute;
+    display: block;
+    width: 600px;
+    height: 250px;
+}
+#ad {
+    position: absolute;
+    display: block;
+    right: 0px;
+    /*border: rgb(145, 153, 153) 1px solid;*/
+    overflow: hidden;
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+#ad.collapsed {
+    width: 300px;
+    /*2px smaller to account for border*/
+    
+    height: 250px;
+    /*2px smaller to account for border*/
+}
+#ad.expanded {
+    width: 600px;
+    /*2px smaller to account for border*/
+    
+    height: 250px;
+    /*2px smaller to account for border*/
+}
+#banner {
+    position: absolute;
+    display: block;
+    width: 300px; /**/
+    height: 250px; /**/
+    right: 0px;
+    background-color: #3392df;
+    overflow: hidden;
+}
+#panel {
+    position: absolute;
+    width: 600px; /**/
+    height: 250px; /**/
+    /*background-color: #3392df;*/
+    overflow: hidden;
+}
+.expanded #banner {
+    display: none;
+}
+.collapsed #panel {
+    display: none;
+}
+
+#cadre, #logo{
+    position: absolute;
+    width:100%; /**/
+    height:100%; /**/
+    top:0px;
+    right:0px;
+    background-repeat:no-repeat;
+    background-position: right;
+}
+
+#skew_left, #skew_right, #skew_left_top, #skew_right_top, #txt1, #txt2, #txt3, #txt4, #txt5, #survol, /*#cta,*/ #voitures{
+    position: absolute;
+    width:300px;
+    height:250px; /**/
+    top:-5px;
+    left:-5px;
+}
+
+#skew_left{background-image:url("../images/skew_left.png");}
+#skew_right{background-image:url("../images/skew_right.png");}
+#skew_left_top{background-image:url("../images/skew_left.png");}
+#skew_right_top{background-image:url("../images/skew_right.png");}
+#skew_left_expand{background-image:url("../images/skew_left.png");}
+#skew_right_expand{background-image:url("../images/skew_right.png");}
+#txt1{background-image:url("../images/txt1.png");}
+#txt2{background-image:url("../images/txt2.png");}
+#txt3{background-image:url("../images/txt3.png");}
+#txt4{background-image:url("../images/txt4.png");}
+#txt5{background-image:url("../images/txt5.png");}
+#survol{background-image:url("../images/survol.png");}
+/*#cta{background-image:url("../images/cta.png");}*/
+#cadre{background-image:url("../images/cadre.png");}
+#voitures{background-image:url("../images/voitures.png");}
+#logo{background-image:url("../images/logo_collapse.png");}
+
+#mask{
+    position: absolute;
+    width:calc(100% - 10px);
+    height:calc(100% - 10px);
+    top:5px;
+    left:5px;
+    overflow:hidden;
+}
+#mask_expand{
+    position: absolute;
+    width:calc(100% - 10px);
+    height:calc(100% - 10px);
+    top:5px;
+    right:5px;
+    overflow:hidden;
+    /*background-color: rgba(0,0,0,0.7);*/
+}
+
+#skew_left_expand, #skew_right_expand{
+    position: absolute;
+    width:600px;
+    height:250px;
+    top:0px;
+    left:0px;
+    background-repeat:no-repeat;
+}
+
+#bg3, #bg4, #bg5, #bg6, #bg7, #bg8{
+    position: absolute;
+    top:0px;
+    right:0px;
+}
+
+#bg{
+    position: absolute;
+    width:100%;
+    height:100%;
+    top:0px;
+    right:0px;
+    background-color: #3392df;
+    /*object-fit: fill;*/
+}
+
+#cadre_expand{
+    position: absolute;
+    width:100%;
+    height:100%;
+    top:0px;
+    right:0px;
+    object-fit: fill;
+
+}
+
+#cta_expand{
+    position: absolute;
+    bottom:0px;
+    left:0%;
+}
+
+#sol1, #sol2, #sol3, #sol4, #sol5, #sol6,
+#props1_1, #props2_1, #props3_1, #props4_1, #props5_1, #props6_1,
+#props1_2, #props2_2, #props3_2, #props4_2, #props5_2, #props6_2,
+#txt_1, #txt_2, #txt_3, #txt_4, #txt_5, #txt_6, 
+#car1, #car2, #car3, #car4, #car5, #car6{
+    position: absolute;
+    top:-5px;
+    right:-5px;
+}

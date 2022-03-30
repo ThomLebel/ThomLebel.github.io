@@ -1,0 +1,104 @@
+body {
+    font-family: 'Oswald', sans-serif;
+    margin: 0px;
+}
+#ad {/*
+    position: absolute;
+    top:50px;
+    left:500px;*/
+    display: block;
+    overflow: hidden;
+    width: 300px;
+    height: 600px;
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor:pointer;
+}
+#banner {
+    position: absolute;
+    display: block;
+    width: 300px;
+    height: 600px;
+    background-color: #FFF;
+    /*background-image: url("../images/logo.png");*/
+    /*background-position: 10px 10px;
+    background-repeat: no-repeat;*/
+    overflow: hidden;
+}
+#contour {
+    position:absolute;
+    width: calc(100% - 2px);
+    height: calc(100% - 2px);
+    left:0px;
+    top:0px;
+    border:1px solid black;
+}
+
+#bg1, #bg2, #bg3, #bg4, #halo, #txt0, #txt1, #txt2, #txt3, #txt4, #car, #car2, #cta, #cta1, #cta2, #logo{
+    position:absolute;
+    top:0;
+    left:0;
+}
+
+#cta{
+    width:100%;
+    height:100%;
+}
+
+#cta2{
+    opacity: 0;
+}
+
+#rain_container{
+    position: absolute;
+    width:100%;
+    height: 71%;
+    top:0;
+    left:0;
+    overflow:hidden;
+    z-index:1;
+}
+#rain{
+    position: absolute;
+    width:700px;
+    height: 650px;
+    top:-16px;
+    left:-183px;
+    transform:rotateZ(105deg);
+    -o-transform:rotateZ(105deg);
+    -ms-transform:rotateZ(105deg);
+    -webkit-transform:rotateZ(105deg);
+    -moz-transform:rotateZ(105deg);
+}
+
+#rain_mc{
+    opacity: 0;
+}
+
+#star_container{
+    position: absolute;
+    width:100%;
+    height: 100%;
+    top:0;
+    left:0;
+    overflow:hidden;
+}
+#star{
+    position: absolute;
+    width:700px;
+    height: 650px;
+    top:-16px;
+    left:-183px;
+    transform:rotateZ(150deg);
+    -o-transform:rotateZ(150deg);
+    -ms-transform:rotateZ(150deg);
+    -webkit-transform:rotateZ(150deg);
+    -moz-transform:rotateZ(150deg);
+}
+
+#star_mc{
+    opacity: 0;
+}
