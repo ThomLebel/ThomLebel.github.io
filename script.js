@@ -29,6 +29,9 @@ function init(){
 
     iframeContainer.addEventListener("click", closeIframe);
     document.getElementById("close_btn").addEventListener("click", closeIframe);
+    document.getElementById("cta_cv").onclick = function(){
+        window.open('doc/CV_ThomasLebel.pdf', '_blank');
+    };
 
     ads.forEach((item, index) => {
         createAdBlock(index);
@@ -88,8 +91,6 @@ function resizeIframe(){
 
     if(currentIframe.clientWidth == target.clientWidth &&
         currentIframe.clientHeight == target.clientHeight){
-        
-        console.log("done resizing");
         clearInterval(resizeInterval);
         return;
     }
@@ -98,7 +99,6 @@ function resizeIframe(){
     var y= target.clientHeight;
     currentIframe.style.width = x+"px";
     currentIframe.style.height = y+"px";
-    console.log(x+" "+y+" vs "+currentIframe.clientWidth+" "+currentIframe.clientHeight);
 }
 
 function closeIframe(){
