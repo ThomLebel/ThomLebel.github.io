@@ -15,14 +15,6 @@ var leftLimit;
 
 
 
-function initEB() {
-    if (!EB.isInitialized()) {
-        EB.addEventListener(EBG.EventName.EB_INITIALIZED, startAd);
-    } else {
-        startAd();
-    }
-}
-
 function startAd() {
     adDiv = document.getElementById("ad");
     sliderContainer = document.getElementById("slider");
@@ -60,13 +52,7 @@ function addEventListeners() {
     document.getElementById('knob1').addEventListener("click", function(e){e.stopPropagation();});
 }
 
-
-function clickthrough() {
-    EB.clickthrough();
-    consloe.log('click');
-}
-
-window.addEventListener("load", initEB);
+window.onload = startAd;
 
 var timeline = new TimelineMax();
 var tlReflet = new TimelineMax();

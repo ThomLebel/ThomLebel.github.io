@@ -8,13 +8,6 @@ var _cloud;
 
 var once = false;
 
-function initEB() {
-    if (!EB.isInitialized()) {
-        EB.addEventListener(EBG.EventName.EB_INITIALIZED, startAd);
-    } else {
-        startAd();
-    }
-}
 
 function startAd() {
     adDiv = document.getElementById("ad");
@@ -28,13 +21,9 @@ function startAd() {
 }
 
 function addEventListeners() {
-    adDiv.addEventListener("click", clickthrough);
+    // adDiv.addEventListener("click", clickthrough);
     // adDiv.addEventListener("mouseenter", overAd);
     // adDiv.addEventListener("mouseleave", outAd);
-}
-
-function clickthrough() {
-    EB.clickthrough();
 }
 
 function create_img(max, div, list, img, minRand, maxRand){
@@ -104,4 +93,4 @@ function anim(){
     tl.to(moto_container, 3, {ease:Power2.easeInOut, left:"-290%"});
 }
 
-window.addEventListener("load", initEB);
+window.onload = startAd;

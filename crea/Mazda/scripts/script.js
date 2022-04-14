@@ -14,13 +14,7 @@ var _star;
 var once = false;
 // var randScale;
 
-function initEB() {
-    if (!EB.isInitialized()) {
-        EB.addEventListener(EBG.EventName.EB_INITIALIZED, startAd);
-    } else {
-        startAd();
-    }
-}
+
 
 function startAd() {
     adDiv = document.getElementById("ad");
@@ -40,15 +34,12 @@ function startAd() {
 }
 
 function addEventListeners() {
-    adDiv.addEventListener("click", clickthrough);
+    // adDiv.addEventListener("click", clickthrough);
     adDiv.addEventListener("mouseenter", overAd);
     adDiv.addEventListener("mouseleave", outAd);
     // document.getElementById("user-action-button").addEventListener("click", userActionCounter);
 }
 
-function clickthrough() {
-    EB.clickthrough();
-}
 
 
 function create_img(max, div, list, img, minRand, maxRand){
@@ -124,4 +115,4 @@ function outAd(){
     TweenMax.to(cta2, 0.5, {opacity:0});
 }
 
-window.addEventListener("load", initEB);
+window.onload = startAd;

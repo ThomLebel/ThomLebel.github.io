@@ -84,16 +84,21 @@ function iframeLoaded(){
 }
 
 function resizeIframe(){
-    if(currentIframe.style.scrollWidth == currentIframe.contentWindow.document.body.scrollWidth &&
-        currentIframe.style.scrollHeight == currentIframe.contentWindow.document.body.scrollHeight){
+    let target = currentIframe.contentWindow.document.body.children[0];
+
+    if(currentIframe.clientWidth == target.clientWidth &&
+        currentIframe.clientHeight == target.clientHeight){
+        
+        console.log("done resizing");
         clearInterval(resizeInterval);
         return;
     }
 
-    var x= currentIframe.contentWindow.document.body.scrollWidth;
-    var y= currentIframe.contentWindow.document.body.scrollHeight;
+    var x= target.clientWidth;
+    var y= target.clientHeight;
     currentIframe.style.width = x+"px";
     currentIframe.style.height = y+"px";
+    console.log(x+" "+y+" vs "+currentIframe.clientWidth+" "+currentIframe.clientHeight);
 }
 
 function closeIframe(){

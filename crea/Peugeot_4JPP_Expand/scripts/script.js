@@ -4,13 +4,6 @@ var timelineExpand = new TimelineLite();
 var once = false;
 
 
-function initEB() {
-    if (!EB.isInitialized()) {
-        EB.addEventListener(EBG.EventName.EB_INITIALIZED, startAd);
-    } else {
-        startAd();
-    }
-}
 
 function startAd() {
     adDiv = document.getElementById("ad");
@@ -23,11 +16,11 @@ function startAd() {
 function addEventListeners() {
     adDiv.addEventListener("mouseenter", expand);
     adDiv.addEventListener("mouseleave", collapse);
-    adDiv.addEventListener("click", clickthrough);
+    // adDiv.addEventListener("click", clickthrough);
 }
 
 function expand() {
-    EB.expand();
+    // EB.expand();
     adDiv.classList.remove("collapsed");
     adDiv.classList.add("expanded");
     if(!once){
@@ -39,13 +32,13 @@ function expand() {
 function collapse() {
     adDiv.classList.remove("expanded");
     adDiv.classList.add("collapsed");
-    EB.collapse();
+    // EB.collapse();
     timelineCollapse.restart();
 }
 
-function clickthrough() {
-    EB.clickthrough();
-}
+// function clickthrough() {
+//     EB.clickthrough();
+// }
 
 
 function anim(){
@@ -150,4 +143,4 @@ function animExpand(){
 
 
 
-window.addEventListener("load", initEB);
+window.onload = startAd;
