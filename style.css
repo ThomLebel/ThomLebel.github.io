@@ -1,0 +1,226 @@
+* {
+    position : relative;
+    margin: 0;
+    padding: 0;
+}
+
+.centered-element {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+}
+
+.vertical-center{
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%); 
+}
+
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+}
+
+.header{
+    position: fixed;
+    top:0px;
+    left:0px;
+    width: 100%;
+    height:100px;
+    display: block;
+    z-index: 99;
+    background-color: #fff;
+}
+
+.footer{
+    position: fixed;
+    bottom:0px;
+    left:0px;
+    width: 100%;
+    height:15px;
+    display: block;
+    z-index: 99;
+    background-color: #000;
+    color:white;
+    text-align: center;
+    font-size: 8px;
+}
+
+.nom{
+    left:5%;
+}
+
+.cv{
+    right:5%;
+}
+
+.wrap{
+    position: relative;
+    top:100px;
+    width: 100%;
+    display: block;
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    float: left;
+    padding-bottom: 15px;
+}
+
+.content {
+    position: relative;
+    width: calc(100% / 4);
+    overflow: hidden;
+    backface-visibility: hidden;
+    float: left;
+}
+.thumb {
+    position: absolute;
+    width: 102%;
+    height: 102%;
+    left: -1%;
+    top: -1%;
+    pointer-events: none;
+}
+.bkg_container {
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    top: 100%;
+    left: 0%;
+    transform-origin: top left;
+    -webkit-transform: rotate(40deg);
+       -moz-transform: rotate(40deg);
+	    -ms-transform: rotate(40deg);
+	     -o-transform: rotate(40deg);
+		    transform: rotate(40deg);
+    background-color:#29a129;
+    pointer-events: none;
+    opacity:0.8;
+    transition: all 0.3s ease-in-out;
+}
+.bkg_container.animatebkg{
+    top: -100%;
+}
+.info_container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0%;
+    left: 0%;
+    color: white;
+    opacity: 0;
+    transition: all 0.1s ease-out 0s;
+}
+.info_container.animate{
+    opacity: 1;
+    transition: all 0.3s ease-in 0.1s;
+}
+.client {
+    position: absolute;
+    width: 100%;
+    top: 30%;
+    font-size: 1.6vw;
+    text-align: center;
+    font-weight: bold;
+}
+.campagne {
+    position: absolute;
+    width: 100%;
+    top: 40%;
+    font-size: 1.2vw;
+    text-align: center;
+}
+.agence {
+    position: absolute;
+    width: 100%;
+    top: 48%;
+    font-size: 1.1vw;
+    text-align: center;
+    font-weight: bold;
+}
+.cta {
+    position: absolute;
+    width: 40%;
+    height: auto;
+    top: 68%;
+    left: 30%;
+    font-size: 0.8vw;
+    line-height: 250%;
+    text-align: center;
+    font-weight: bold;
+    border: 2px solid white;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    overflow: hidden;
+    display: block;
+    cursor: pointer;
+    background-color: white;
+    color:black;
+}
+
+
+
+
+.iframe_container{
+    position:fixed;
+    width:100%;
+    height:100%;
+    top:0px;
+    left:0px;
+    background-color: rgba(0,0,0,0.6);
+    display: none;
+}
+
+.close_btn{
+    position: absolute;
+    width:30px;
+    height:30px;
+    top:110px;
+    right:10px;
+    background-image: url(thumb/close_btn.png);
+    background-size: contain;
+    cursor: pointer;
+}
+
+
+
+@media screen and (max-width: 1024px){
+    .content{ width: calc(100% / 3); }
+    .client { font-size: 2vw; }
+	.campagne { font-size: 1.6vw; }
+	.agence { font-size: 1.5vw; }
+	.cta { font-size: 1.2vw; }
+}
+@media screen and (max-width: 767px){
+    .content{ width: 50%; }
+    .client { font-size: 2.4vw; }
+	.campagne { font-size: 2vw; }
+	.agence { font-size: 1.9vw; }
+	.cta { font-size: 1.6vw; }
+    #title{
+        display: none;
+    }
+}
+@media screen and (max-width: 500px){
+    .content{ width: 100%; }
+    .client { font-size: 4.8vw; }
+	.campagne { font-size: 4vw; }
+	.agence { font-size: 3.8vw; }
+	.cta { font-size: 3.2vw; }
+    #header {
+        height: 150px;
+    }
+    .wrap {
+        top: 150px;
+    }
+}
