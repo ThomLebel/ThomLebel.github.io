@@ -78,7 +78,7 @@ function createIframe(){
         var y= currentIframe.contentWindow.document.body.scrollHeight;
         currentIframe.style.width = x+"px";
         currentIframe.style.height = y+"px";
-    }, 300);
+    }, 600);
 }
 
 function closeIframe(){
