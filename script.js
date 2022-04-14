@@ -1,4 +1,4 @@
-let container, adBlock, iframeContainer, currentIframe, adId, contentRatio;
+let container, adBlock, iframeContainer, currentIframe, adId, contentRatio, resizeInterval;
 let contents = [];
 let ads = [
     {name:"AirFrance_Classique", img:"thumb/thumb_AirFrance.jpg", client:"Air France", campagne:"Classique", agence:"BETC"},
@@ -68,22 +68,38 @@ function onClick(){
 
 function createIframe(){
     currentIframe = document.createElement("iframe");
+    currentIframe.onload = iframeLoaded();
     currentIframe.src = "crea/"+ads[adId].name+"/index.html";
     currentIframe.classList.add("centered-element");
+
+    iframeContainer.appendChild(currentIframe);
+    iframeContainer.style.display = "block";
+}
+
+function iframeLoaded(){
     iframeContainer.appendChild(currentIframe);
     iframeContainer.style.display = "block";
 
-    setTimeout(function(){
-        var x= currentIframe.contentWindow.document.body.scrollWidth;
-        var y= currentIframe.contentWindow.document.body.scrollHeight;
-        currentIframe.style.width = x+"px";
-        currentIframe.style.height = y+"px";
-    }, 600);
+    resizeInterval = setInterval(resizeIframe, 100);
+}
+
+function resizeIframe(){
+    if(currentIframe.style.scrollWidth == currentIframe.contentWindow.document.body.scrollWidth &&
+        currentIframe.style.scrollHeight == currentIframe.contentWindow.document.body.scrollHeight){
+        clearInterval(resizeInterval);
+        return;
+    }
+
+    var x= currentIframe.contentWindow.document.body.scrollWidth;
+    var y= currentIframe.contentWindow.document.body.scrollHeight;
+    currentIframe.style.width = x+"px";
+    currentIframe.style.height = y+"px";
 }
 
 function closeIframe(){
     if(iframeContainer.style.display != "block") return;
     
+    if(resizeInterval != null) clearInterval(resizeInterval);
     iframeContainer.removeChild(currentIframe);
     currentIframe = null;
     iframeContainer.style.display = "none";
