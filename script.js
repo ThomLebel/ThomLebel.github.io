@@ -1,5 +1,6 @@
-let container, adBlock, iframeContainer, currentIframe, adId, contentRatio, resizeInterval;
+let container, adBlock, currentNav, previousNav, iframeContainer, currentIframe, adId, contentRatio, resizeInterval;
 let contents = [];
+let nav = [];
 let ads = [
     {name:"AirFrance_Classique", img:"thumb/thumb_AirFrance.jpg", client:"Air France", campagne:"Classique", agence:"BETC"},
     {name:"AirFrance_Ancillaries_Generique", img:"thumb/thumb_AF_Ancillaries.jpg", client:"Air France", campagne:"Ancillaries Générique", agence:"BETC"},
@@ -26,11 +27,26 @@ function init(){
     iframeContainer = document.getElementById("iframe_container");
     contentRatio = 300/250;
     contents = document.getElementsByClassName("content");
+    nav = document.getElementsByClassName("icon");
+    currentNav = document.getElementById("home");
 
+    listeners();
+
+    window.onresize = onResizeHandler;
+    onResizeHandler();
+}
+
+function listeners(){
     iframeContainer.addEventListener("click", closeIframe);
     document.getElementById("close_btn").addEventListener("click", closeIframe);
     document.getElementById("cta_cv").onclick = function(){
         window.open('doc/CV_ThomasLebel.pdf', '_blank');
+    };
+    document.getElementById("intro").onclick = function(){
+        let navHome = document.getElementById("home");
+        let navCrea = document.getElementById("crea");
+        switchNav(navHome, navCrea);
+        closeIntro();
     };
 
     ads.forEach((item, index) => {
@@ -43,8 +59,24 @@ function init(){
         contents[i].addEventListener("click", onClick);
     }
 
-    window.onresize = onResizeHandler;
-    onResizeHandler();
+    for(var j=0; j<nav.length; j++){
+        nav[j].addEventListener("mouseenter", onEnterNav);
+        nav[j].addEventListener("mouseleave", onLeaveNav);
+        nav[j].addEventListener("click", onClickNav);
+    };
+}
+
+function openIntro(){
+    document.getElementById("intro").classList.remove("animeIntro");
+}
+function closeIntro(){
+    document.getElementById("intro").classList.add("animeIntro");
+}
+function openMail(){
+    console.log("open mail");
+}
+function closeMail(){
+    console.log('close mail');
 }
 
 function onEnter(){
@@ -52,21 +84,59 @@ function onEnter(){
     adBlock.querySelector("#background").classList.add("animatebkg");
     adBlock.querySelector("#info_container").classList.add("animate");
 }
-
 function onLeave(){
     adBlock = this;
     adBlock.querySelector("#background").classList.remove("animatebkg");
     adBlock.querySelector("#info_container").classList.remove("animate");
 }
-
 function onClick(){
     for(var i=0; i<contents.length; i++){
         if(this == contents[i]){
             adId = i;
         }
     }
+    createIframe();
+}
+
+function onEnterNav(){
+    let nav = this;
+    nav.classList.add("animate");
+}
+function onLeaveNav(){
+    let nav = this;
+    nav.classList.remove("animate");
+}
+function onClickNav(){
+    if(this == currentNav) return;
+
+    previousNav = currentNav;
+
+    if(previousNav != null){
+        if(previousNav.id == "home"){
+            closeIntro();
+        }else if(previousNav.id == "mail"){
+            closeMail();
+        }
+    }
     
-    createIframe ();
+    switchNav(previousNav, this);
+
+    let navID = currentNav.id;
+    
+    switch(navID){
+        case "home":
+            openIntro();
+        break;
+        case "mail":
+            openMail();
+        break;
+    }
+}
+
+function switchNav(prev, next){
+    if(prev != null) prev.classList.remove("active");
+    if(next != null) next.classList.add("active");
+    currentNav = next;
 }
 
 function createIframe(){
@@ -149,7 +219,7 @@ function createTextDescription(id, name){
 }
 
 function onResizeHandler(){
-    let newRatio = contents[0].offsetWidth / contentRatio;
+    let newRatio = contents[0].clientWidth / contentRatio;
     for(let c=0; c<contents.length;c++){
         contents[c].style.height = newRatio+"px";
     }
