@@ -182,7 +182,7 @@
     padding: 1.2em 2.8em;
     box-shadow: 0 0 40px 40px var(--vert) inset, 0 0 0 0 var(--vert);
     color: #fff;
-    transition: transition: box-shadow 150ms ease-in-out, color 150ms ease-in-out;
+    transition: box-shadow 150ms ease-in-out, color 150ms ease-in-out;
     left: 50%;
     transform: translateX(-50%);
 }
