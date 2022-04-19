@@ -171,7 +171,6 @@
     border: 2px solid var(--vert);
     border-radius: 3em;
     cursor: pointer;
-    display: flex;
     align-self: center;
     text-decoration: none;
     text-align: center;
