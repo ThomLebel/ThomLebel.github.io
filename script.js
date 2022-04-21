@@ -32,6 +32,8 @@ function init(){
 
     listeners();
 
+    emailjs.init("UtcxWp7-E1QbaYBZE");
+
     window.onresize = onResizeHandler;
     onResizeHandler();
 }
@@ -43,6 +45,7 @@ function listeners(){
         window.open('doc/CV_ThomasLebel.pdf', '_blank');
     };
     document.getElementById("intro").onclick = function(){
+        document.getElementById("whiteScreen").style.display = "none";
         let navHome = document.getElementById("home");
         let navCrea = document.getElementById("crea");
         switchNav(navHome, navCrea);
@@ -66,19 +69,6 @@ function listeners(){
     };
 }
 
-function openIntro(){
-    document.getElementById("intro").classList.remove("animeIntro");
-}
-function closeIntro(){
-    document.getElementById("intro").classList.add("animeIntro");
-}
-function openMail(){
-    console.log("open mail");
-}
-function closeMail(){
-    console.log('close mail');
-}
-
 function onEnter(){
     adBlock = this;
     adBlock.querySelector("#background").classList.add("animatebkg");
@@ -96,88 +86,6 @@ function onClick(){
         }
     }
     createIframe();
-}
-
-function onEnterNav(){
-    let nav = this;
-    nav.classList.add("animate");
-}
-function onLeaveNav(){
-    let nav = this;
-    nav.classList.remove("animate");
-}
-function onClickNav(){
-    if(this == currentNav) return;
-
-    previousNav = currentNav;
-
-    if(previousNav != null){
-        if(previousNav.id == "home"){
-            closeIntro();
-        }else if(previousNav.id == "mail"){
-            closeMail();
-        }
-    }
-    
-    switchNav(previousNav, this);
-
-    let navID = currentNav.id;
-    
-    switch(navID){
-        case "home":
-            openIntro();
-        break;
-        case "mail":
-            openMail();
-        break;
-    }
-}
-
-function switchNav(prev, next){
-    if(prev != null) prev.classList.remove("active");
-    if(next != null) next.classList.add("active");
-    currentNav = next;
-}
-
-function createIframe(){
-    currentIframe = document.createElement("iframe");
-    currentIframe.onload = iframeLoaded();
-    currentIframe.src = "crea/"+ads[adId].name+"/index.html";
-    currentIframe.classList.add("centered-element");
-
-    iframeContainer.appendChild(currentIframe);
-    iframeContainer.style.display = "block";
-}
-
-function iframeLoaded(){
-    iframeContainer.appendChild(currentIframe);
-    iframeContainer.style.display = "block";
-
-    resizeInterval = setInterval(resizeIframe, 100);
-}
-
-function resizeIframe(){
-    let target = currentIframe.contentWindow.document.body.children[0];
-
-    if(currentIframe.clientWidth == target.clientWidth &&
-        currentIframe.clientHeight == target.clientHeight){
-        clearInterval(resizeInterval);
-        return;
-    }
-
-    var x= target.clientWidth;
-    var y= target.clientHeight;
-    currentIframe.style.width = x+"px";
-    currentIframe.style.height = y+"px";
-}
-
-function closeIframe(){
-    if(iframeContainer.style.display != "block") return;
-    
-    if(resizeInterval != null) clearInterval(resizeInterval);
-    iframeContainer.removeChild(currentIframe);
-    currentIframe = null;
-    iframeContainer.style.display = "none";
 }
 
 function createAdBlock(id){

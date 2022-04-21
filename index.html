@@ -10,7 +10,7 @@
     <ul id="nav" class="nav">
       <li id="home" class="icon icon-fill active"><i class="fa fa-home"></i></li>
       <li id="crea" class="icon icon-fill"><i class="fa fa-archive"></i></li>
-      <!-- <li id="mail" class="icon icon-fill"><i class="fa fa-envelope"></i></li> -->
+      <li id="mail" class="icon icon-fill"><i class="fa fa-envelope"></i></li>
     </ul>
     <H1 id="nom" class="nom vertical-center">Thomas Lebel</H1>
     <div id="cta_cv" class="cv vertical-center">C.V</div>
@@ -24,7 +24,9 @@
       <div id="close_btn" class="close_btn"></div>
     </div>
 
-    <div id="intro" class="intro">
+    <div id="whiteScreen" class="section whiteScreen"></div>
+
+    <div id="intro" class="section intro">
       <div id="text_intro" class="text_intro centered-element">
         Bonjour et bienvenue !
         <br><br>
@@ -40,16 +42,77 @@
       </div>
     </div>
 
-    <div id="mail" class="mail">
-
+    <div id="contact" class="section contact animeContact">
+      <div id="contact_form" class="centered-element">
+        <h1>Écrivez-moi !</h1>
+        <form id="myForm" name="myForm" method="post">
+          <table class="form-style">
+              <tr>
+                <td>
+                    <label>
+                      Nom <span class="required">*</span>
+                    </label>
+                </td>
+                <td>
+                    <input type="text" name="name" class="long"/>
+                    <span class="error" id="errorname"></span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                    <label>
+                      Mail <span class="required">*</span>
+                    </label>
+                </td>
+                <td>
+                    <input type="email" name="email" class="long"/>
+                    <span class="error" id="erroremail"></span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                    <label>
+                      Sujet <span class="required">*</span>
+                    </label>
+                </td>
+                <td>
+                    <input type="text" name="subject" class="long"/>
+                    <span class="error" id="errorsubject"></span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                    <label>
+                      Message <span class="required">*</span>
+                    </label>
+                </td>
+                <td>
+                    <textarea name="message" class="long field-textarea"></textarea>
+                    <span class="error" id="errormsg"></span>
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>
+                    <input type="button" onclick="sendMail()" value="Envoyer">      
+                    <input type="reset" value="Reset"> 
+                </td>
+              </tr>
+          </table>
+        </form>
+      </div>
     </div>
   </div>
 
   <div id="footer" class="footer">
     <p class="centered-element">© Copyright 2022 | Tous droits réservés</p>
   </div>
-  
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2.4.0/dist/email.min.js"></script>
 <script src="script.js"></script>
+<script src="navigation.js"></script>
+<script src="iframe.js"></script>
+<script src="contact.js"></script>
 
 </body>
 </html>

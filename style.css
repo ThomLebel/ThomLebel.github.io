@@ -142,12 +142,18 @@
     color:white; 
 }
 
-.intro{
+.section{
     position:absolute;
     width:100%;
     height:100%;
     top:0px;
     left:0px;
+}
+.whiteScreen{
+    background-color:#eee;
+    display: none;
+}
+.intro{
     background-color:#eee;
     color: var(--vert);
     font-size: 1rem;
@@ -189,6 +195,84 @@
     box-shadow: 0 0 10px 0 var(--vert) inset, 0 0 10px 4px var(--vert);
     color: var(--vert);
 }
+
+.contact{
+    background-color:#eee;
+    color: var(--vert);
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    transition: all 1s ease-in; 
+}
+.contact.animeContact{
+    transform: translateY(100%);
+}
+.form-style {
+    margin:10px auto;
+    width: 400px;
+    padding: 20px 12px 10px 20px;
+    font: 14px "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  }
+  .form-style td {
+    padding: 0;
+    display: block;
+    list-style: none;
+    margin: 10px 0 0 0;
+  }
+  .form-style label{
+    margin:0 0 3px 0;
+    padding:0px;
+    display:block;
+    font-weight: bold;
+  }
+  .form-style .required{
+    color:red;
+  }
+  .form-style input[type=button], .form-style input[type=reset]{
+    background: var(--vert);
+    padding: 8px 15px 8px 15px;
+    border: none;
+    color: #fff;
+  }
+  .form-style input[type=button]:hover, .form-style input[type=reset]:hover{
+    background: var(--vert);
+    box-shadow:none;
+    -moz-box-shadow:none;
+    -webkit-box-shadow:none;
+  }
+  .form-style .field-textarea{
+    height: 100px;
+  }
+  .form-style input[type=text], 
+  .form-style input[type=email],
+  textarea{
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    border:1px solid #BEBEBE;
+    padding: 7px;
+    margin:0px;
+    -webkit-transition: all 0.30s ease-in-out;
+    -moz-transition: all 0.30s ease-in-out;
+    -ms-transition: all 0.30s ease-in-out;
+    -o-transition: all 0.30s ease-in-out;
+    outline: none;  
+  }
+  .form-style .long{
+    width: 100%;
+  }
+  .form-style input[type=text]:focus, 
+  .form-style input[type=email]:focus,
+  .form-style textarea:focus{
+    -moz-box-shadow: 0 0 8px #88D5E9;
+    -webkit-box-shadow: 0 0 8px #88D5E9;
+    box-shadow: 0 0 8px #88D5E9;
+    border: 1px solid #88D5E9;
+  }
+  .error{
+    color: #D8000C;
+    background-color: #FFBABA;
+  }
 
 .container {
     position: absolute;
