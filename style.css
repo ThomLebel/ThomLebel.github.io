@@ -30,6 +30,12 @@
     top: 50%;
     transform: translateY(-50%); 
 }
+.horizontal-center{
+    margin: 0;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%); 
+}
 
 .noselect {
     -webkit-touch-callout: none; /* iOS Safari */
@@ -121,17 +127,19 @@
     cursor: pointer;
     position: relative;
     display: inline-block;
+    overflow: hidden;
+    box-shadow: inset 0 0 0 1px var(--vert);
+    color: var(--vert);
+    transition: box-shadow .4s ease-in-out, color .4s ease-in-out;
+}
+.icon-fill {
     width: 60px;
     height: 60px;
     margin-left: 12px;
     margin-right: 12px;
     border-radius: 30px;
-    overflow: hidden;
-    box-shadow: inset 0 0 0 1px var(--vert);
     font-size: 30px;
     line-height: 60px;
-    color: var(--vert);
-    transition: box-shadow .4s ease-in-out, color .4s ease-in-out;
 }
 .icon.animate{
     box-shadow: inset 0 0 0 60px var(--vert);
@@ -212,40 +220,41 @@
     width: 400px;
     padding: 20px 12px 10px 20px;
     font: 14px "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-  }
-  .form-style td {
+}
+.form-style td {
     padding: 0;
     display: block;
     list-style: none;
     margin: 10px 0 0 0;
-  }
-  .form-style label{
+}
+.form-style label{
     margin:0 0 3px 0;
     padding:0px;
     display:block;
     font-weight: bold;
-  }
-  .form-style .required{
+}
+.form-style .required{
     color:red;
-  }
-  .form-style input[type=button], .form-style input[type=reset]{
+}
+.form-style input[type=button], .form-style input[type=reset]{
     background: var(--vert);
     padding: 8px 15px 8px 15px;
     border: none;
     color: #fff;
-  }
-  .form-style input[type=button]:hover, .form-style input[type=reset]:hover{
+    cursor:pointer;
+}
+.form-style input[type=button]:hover, .form-style input[type=reset]:hover{
     background: var(--vert);
     box-shadow:none;
     -moz-box-shadow:none;
     -webkit-box-shadow:none;
-  }
-  .form-style .field-textarea{
+}
+.form-style .field-textarea{
     height: 100px;
-  }
-  .form-style input[type=text], 
-  .form-style input[type=email],
-  textarea{
+}
+.form-style input[type=text], 
+.form-style input[type=email],
+textarea{
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -256,23 +265,68 @@
     -moz-transition: all 0.30s ease-in-out;
     -ms-transition: all 0.30s ease-in-out;
     -o-transition: all 0.30s ease-in-out;
+    transition: all 0.30s ease-in-out;
     outline: none;  
-  }
-  .form-style .long{
+}
+.form-style .long{
     width: 100%;
-  }
-  .form-style input[type=text]:focus, 
-  .form-style input[type=email]:focus,
-  .form-style textarea:focus{
+}
+.form-style input[type=text]:focus, 
+.form-style input[type=email]:focus,
+.form-style textarea:focus{
     -moz-box-shadow: 0 0 8px #88D5E9;
     -webkit-box-shadow: 0 0 8px #88D5E9;
     box-shadow: 0 0 8px #88D5E9;
     border: 1px solid #88D5E9;
-  }
-  .error{
+}
+.error{
     color: #D8000C;
     background-color: #FFBABA;
-  }
+}
+
+.network_container{
+    position: relative;
+    width:100%;
+    margin-top: 10%;
+}
+.networks{
+    position: relative;
+    display: block;
+    margin: 10% 0;
+}
+.network{
+        width: 60px;
+        height: 60px;
+        margin-left: 12px;
+        margin-right: 12px;
+        border-radius: 30px;
+        font-size: 30px;
+        line-height: 60px;
+}
+.logo{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width:100%;
+    height:100%;
+    background-size: contain;
+    filter: grayscale(1);
+}
+.logo:hover{
+    filter: grayscale(0);
+}
+.network:hover{
+    box-shadow: 0 0 10px 0 var(--vert) inset, 0 0 10px 4px var(--vert);
+}
+.linkedin{
+    background-image: url(img/logo_linkedin.png);
+}
+.malt{
+    background-image: url(img/logo_malt.png);
+}
+.upwork{
+    background-image: url(img/logo_upwork.png);
+}
 
 .container {
     position: absolute;
@@ -416,7 +470,7 @@
 	.agence { font-size: 1.9vw; }
 	.cta { font-size: 1.6vw; }
     .nav{ height: 30px; }
-    .icon {
+    .icon-fill {
         width: 30px;
         height: 30px;
         margin-left: 6px;

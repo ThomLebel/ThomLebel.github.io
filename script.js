@@ -27,7 +27,7 @@ function init(){
     iframeContainer = document.getElementById("iframe_container");
     contentRatio = 300/250;
     contents = document.getElementsByClassName("content");
-    nav = document.getElementsByClassName("icon");
+    nav = document.getElementsByClassName("icon-fill");
     currentNav = document.getElementById("home");
 
     listeners();
