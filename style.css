@@ -327,6 +327,9 @@ textarea{
 .upwork{
     background-image: url(img/logo_upwork.png);
 }
+.fiverr{
+    background-image: url(img/logo_fiverr.png);
+}
 
 .container {
     position: absolute;
