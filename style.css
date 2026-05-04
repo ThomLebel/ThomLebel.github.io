@@ -251,13 +251,7 @@ iframe{
     margin-bottom: 24px;
 }
  
-.text_intro p,
-.text_intro br + br {
-    display: none;
-}
- 
-/* On réécrit le contenu via le pseudo pour garder le JS intact */
-.centered-element.text_intro {
+.text_intro {
     position: relative;
     top: auto;
     left: auto;
@@ -677,35 +671,6 @@ textarea:focus {
 .close_btn:hover {
     border-color: rgba(255,255,255,0.2);
     background-color: rgba(255,255,255,0.1);
-}
- 
-/* ─── HELPERS ─────────────────────────────────────── */
- 
-.centered-element {
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
- 
-.vertical-center {
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-}
- 
-.horizontal-center {
-    margin: 0;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-}
- 
-.noselect {
-    -webkit-user-select: none;
-    user-select: none;
 }
  
 /* ─── RESPONSIVE ──────────────────────────────────── */
