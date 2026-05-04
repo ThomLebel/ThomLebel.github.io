@@ -18,6 +18,10 @@
     -webkit-user-select: none;
     user-select: none;
 }
+
+iframe{
+    box-sizing: content-box;
+}
  
 /* ─── HEADER / NAVBAR ─────────────────────────────── */
  
