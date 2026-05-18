@@ -1,0 +1,79 @@
+---
+const services = [
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>`,
+    title: "Web",
+    description: "Landing pages, intégration CMS, Webflow — des sites qui convertissent."
+  },
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>`,
+    title: "Motion",
+    description: "Bannières HTML5, animations GSAP, motion design — du mouvement qui capte l'attention."
+  },
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>`,
+    title: "Emailing",
+    description: "Intégration MJML, Actito, Brevo — des emails qui arrivent et qui performent."
+  },
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M12 12h.01"/><path d="M7 12h.01"/><path d="M17 12h.01"/></svg>`,
+    title: "Jeux Vidéo",
+    description: "Conception et développement de jeux indépendants — de l'idée au joueur."
+  }
+];
+---
+
+<section id="services" class="section-block">
+  <p class="section-eyebrow">MES SERVICES</p>
+  <h2 class="section-title">Ce que je fais</h2>
+  <div class="services-grid">
+    {services.map(service => (
+      <div class="service-card">
+        <div class="service-icon" set:html={service.icon} />
+        <h3>{service.title}</h3>
+        <p>{service.description}</p>
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 24px;
+  }
+
+  .service-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 40px 32px;
+    transition: border-color 0.3s;
+  }
+
+  .service-card:hover {
+    border-color: rgba(0,200,255,0.3);
+  }
+
+  .service-icon {
+    color: var(--accent-cyan);
+    margin-bottom: 20px;
+    width: 24px;
+    height: 24px;
+  }
+
+  .service-card h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--text);
+  }
+
+  .service-card p {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: rgba(240,244,255,0.5);
+  }
+</style>

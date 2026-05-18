@@ -1,0 +1,75 @@
+---
+import links from '../data/links.json';
+---
+
+<nav class="navbar">
+  <div class="nom">Thomas Lebel</div>
+  <ul class="nav">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#realisations">Réalisations</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href={links.cv} target="_blank" class="cv">C.V</a>
+</nav>
+
+<style>
+  .navbar {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    z-index: 99;
+    background: rgba(10, 15, 26, 0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nom {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  .nav {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    list-style: none;
+  }
+
+  .nav a {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: rgba(240,244,255,0.6);
+    transition: color 0.2s;
+  }
+
+  .nav a:hover { color: var(--text); }
+
+  .cv {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 10px 24px;
+    border-radius: 100px;
+    border: 1px solid var(--accent-green);
+    color: var(--accent-green);
+    transition: all 0.3s ease;
+  }
+
+  .cv:hover {
+    background: var(--accent-green);
+    color: #0A0F1A;
+  }
+</style>

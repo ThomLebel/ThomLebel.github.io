@@ -1,0 +1,61 @@
+---
+const words = [
+  "Webflow", "GSAP", "HTML5", "JavaScript", "Bannières",
+  "Emailing", "MJML", "Marketing Automation", "SharePoint",
+  "Jeux Vidéo", "Motion", "Brevo", "Actito", "Landing Pages"
+];
+---
+
+<div class="marquee-section">
+  <div class="marquee-track">
+    {[1, 2].map(() => (
+      <ul class="marquee-list">
+        {words.map(word => (
+          <li>{word} <span class="marquee-dot">·</span></li>
+        ))}
+      </ul>
+    ))}
+  </div>
+</div>
+
+<style>
+  .marquee-section {
+    overflow: hidden;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 16px 0;
+  }
+
+  .marquee-track {
+    display: flex;
+    width: max-content;
+  }
+
+  .marquee-list {
+    display: flex;
+    list-style: none;
+    animation: marquee 30s linear infinite;
+    flex-shrink: 0;
+  }
+
+  .marquee-list li {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: rgba(240,244,255,0.4);
+    padding: 0 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+  }
+
+  .marquee-dot {
+    color: var(--accent-cyan);
+    margin-left: 20px;
+  }
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+</style>

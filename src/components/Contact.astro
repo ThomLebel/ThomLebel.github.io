@@ -1,0 +1,41 @@
+---
+import links from '../data/links.json';
+---
+
+<section id="contact" class="section-block contact-section">
+  <p class="section-eyebrow">On travaille ensemble ?</p>
+  <h2 class="section-title">Un projet en tête ?</h2>
+  <p class="contact-desc">Parlons-en. Je réponds sous 24h.</p>
+  <a href={links.email} class="cta-btn">Me contacter →</a>
+  <div class="contact-links">
+    <a href={links.linkedin} target="_blank">LinkedIn</a>
+    <a href={links.malt} target="_blank">Malt</a>
+  </div>
+</section>
+
+<style>
+  .contact-section {
+    text-align: center;
+  }
+
+  .contact-desc {
+    font-size: 1rem;
+    color: rgba(240,244,255,0.5);
+    margin-bottom: 32px;
+  }
+
+  .contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    margin-top: 24px;
+  }
+
+  .contact-links a {
+    font-size: 0.85rem;
+    color: rgba(240,244,255,0.4);
+    transition: color 0.2s;
+  }
+
+  .contact-links a:hover { color: var(--accent-cyan); }
+</style>

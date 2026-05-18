@@ -1,0 +1,45 @@
+---
+import links from '../data/links.json';
+---
+
+<footer class="footer">
+  <div class="footer-links">
+    <a href={links.linkedin} target="_blank">LinkedIn</a>
+    <a href={links.malt} target="_blank">Malt</a>
+    <a href={links.email}>Contact</a>
+    <a href={links.bonaventure} target="_blank">Bonaventure Studio</a>
+  </div>
+  <p class="footer-copy">© 2025 Thomas Lebel · Bonaventure Studio</p>
+</footer>
+
+<style>
+  .footer {
+    padding: 40px;
+    border-top: 1px solid var(--border);
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+  }
+
+  .footer-links {
+    grid-column: 2;
+    display: flex;
+    gap: 32px;
+    justify-content: center;
+  }
+
+  .footer-links a {
+    font-size: 0.85rem;
+    color: rgba(240,244,255,0.4);
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--accent-cyan); }
+
+  .footer-copy {
+    grid-column: 3;
+    font-size: 0.75rem;
+    color: rgba(240,244,255,0.2);
+    text-align: right;
+  }
+</style>

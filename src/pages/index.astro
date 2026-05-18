@@ -1,0 +1,94 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Hero from '../components/Hero.astro';
+import Marquee from '../components/Marquee.astro';
+import Services from '../components/Services.astro';
+import Banners from '../components/Banners.astro';
+import Emails from '../components/Emails.astro';
+import Sites from '../components/Sites.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout>
+  <Navbar />
+  <Hero />
+  <Marquee />
+  <Services />
+
+  <section id="realisations" class="section-block">
+    <p class="section-eyebrow">MES RÉALISATIONS</p>
+    <h2 class="section-title">Projets récents</h2>
+    <Banners />
+    <Emails />
+    <Sites />
+  </section>
+
+  <Contact />
+  <Footer />
+
+  <script>
+    const cards = document.querySelectorAll<HTMLElement>('.banner-card');
+    const emailCards = document.querySelectorAll<HTMLElement>('.email-card');
+
+    const overlay = document.createElement('div');
+    overlay.id = 'iframe-overlay';
+    overlay.innerHTML = `
+      <div id="iframe-close">✕</div>
+      <iframe id="banner-iframe" src="" frameborder="0" scrolling="no"></iframe>
+    `;
+    document.body.appendChild(overlay);
+
+    const iframe = document.getElementById('banner-iframe') as HTMLIFrameElement;
+    let resizeInterval: ReturnType<typeof setInterval>;
+
+    function resizeIframe() {
+      const target = iframe.contentWindow?.document.body.children[0];
+      if (!target) return;
+      const x = (target as HTMLElement).clientWidth;
+      const y = (target as HTMLElement).clientHeight;
+      if (iframe.clientWidth === x && iframe.clientHeight === y) {
+        clearInterval(resizeInterval);
+        return;
+      }
+      iframe.style.width = x + 'px';
+      iframe.style.height = y + 'px';
+    }
+
+    function openOverlay(src: string, isEmail: boolean = false) {
+      iframe.src = src;
+      overlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      if (isEmail) {
+        iframe.style.width = '600px';
+        iframe.style.height = '80vh';
+        iframe.setAttribute('scrolling', 'yes');
+      } else {
+        iframe.setAttribute('scrolling', 'no');
+        resizeInterval = setInterval(resizeIframe, 100);
+      }
+    }
+
+    cards.forEach(card => {
+      card.addEventListener('click', () => {
+        openOverlay(`/crea/${card.dataset.name}/index.html`, false);
+      });
+    });
+
+    emailCards.forEach(card => {
+      card.addEventListener('click', () => {
+        openOverlay(`/emails/${card.dataset.name}/index.html`, true);
+      });
+    });
+
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay || (e.target as HTMLElement).id === 'iframe-close') {
+        overlay.classList.remove('active');
+        iframe.src = '';
+        document.body.style.overflow = '';
+        clearInterval(resizeInterval);
+      }
+    });
+  </script>
+</Layout>

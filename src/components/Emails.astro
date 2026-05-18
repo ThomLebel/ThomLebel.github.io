@@ -1,0 +1,92 @@
+---
+import emails from '../data/emails.json';
+---
+
+<h3 class="subsection-title">Emailing MJML</h3>
+<ul class="emails-grid">
+  {emails.map((email) => (
+    <li class="email-card" data-name={email.name}>
+      <div class="email-preview">
+        <iframe
+          src={`/emails/${email.name}/index.html`}
+          scrolling="no"
+          tabindex="-1"
+        ></iframe>
+        <div class="email-overlay">
+          <div class="banner-cta">VOIR LE TEMPLATE</div>
+        </div>
+      </div>
+      <div class="email-meta">
+        <span class="banner-client">{email.label}</span>
+        <span class="banner-campagne">{email.description}</span>
+        <div class="email-stack">
+          {email.stack.map(tag => <span class="stack-tag">{tag}</span>)}
+        </div>
+      </div>
+    </li>
+  ))}
+</ul>
+
+<style>
+  .emails-grid {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 24px;
+  }
+
+  .email-card {
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: border-color 0.3s;
+    background: var(--surface);
+  }
+
+  .email-card:hover { border-color: rgba(0,200,255,0.3); }
+
+  .email-preview {
+    position: relative;
+    height: 300px;
+    overflow: hidden;
+    background: #fff;
+  }
+
+  .email-preview iframe {
+    width: 200%;
+    height: 600px;
+    transform: scale(0.5);
+    transform-origin: top left;
+    pointer-events: none;
+    border: none;
+    display: block;
+  }
+
+  .email-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(10,15,26,0.7);
+    display: flex;
+    align-items: flex-end;
+    padding: 20px;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .email-card:hover .email-overlay { opacity: 1; }
+
+  .email-meta {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .email-stack {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+    flex-wrap: wrap;
+  }
+</style>

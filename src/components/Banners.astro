@@ -1,0 +1,67 @@
+---
+import banners from '../data/banners.json';
+---
+
+<h3 class="subsection-title">Bannières HTML5</h3>
+<ul class="bannieres-grid">
+  {banners.map((banner) => (
+    <li class="banner-card" data-name={banner.name}>
+      <img src={banner.img} alt={`${banner.client} - ${banner.campagne}`} loading="lazy" />
+      <div class="banner-info">
+        <span class="banner-client">{banner.client}</span>
+        <span class="banner-campagne">{banner.campagne}</span>
+        <span class="banner-agence">{banner.agence}</span>
+        <div class="banner-cta">VOIR LE FORMAT</div>
+      </div>
+    </li>
+  ))}
+</ul>
+
+<style>
+  .bannieres-grid {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 20px;
+  }
+
+  .banner-card {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: pointer;
+    border: 1px solid var(--border);
+    aspect-ratio: 300 / 250;
+    transition: border-color 0.3s;
+  }
+
+  .banner-card:hover { border-color: rgba(0,200,255,0.3); }
+
+  .banner-card img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .banner-info {
+    position: absolute;
+    inset: 0;
+    background: rgba(10,15,26,0.88);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 20px;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .banner-card:hover .banner-info { opacity: 1; }
+
+  .banner-agence {
+    font-size: 0.75rem;
+    color: var(--accent-cyan);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+</style>

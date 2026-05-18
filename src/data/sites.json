@@ -1,0 +1,35 @@
+[
+  {
+    "name": "restaurant-demo",
+    "label": "L'Arôme",
+    "description": "Site restaurant gastronomique",
+    "stack": ["Webflow", "Interactions"],
+    "url": "https://restaurant-demo-61196d.webflow.io",
+    "thumbs": [
+      "sites/thumb_restaurant_01.png",
+      "sites/thumb_restaurant_02.png"
+    ]
+  },
+  {
+    "name": "thomas-lebel-freelance",
+    "label": "Portfolio Freelance",
+    "description": "Site vitrine freelance",
+    "stack": ["Webflow", "CMS", "Interactions"],
+    "url": "https://thomas-lebel-freelance.webflow.io",
+    "thumbs": [
+      "sites/thumb_freelance_01.png",
+      "sites/thumb_freelance_02.png"
+    ]
+  },
+  {
+    "name": "bonaventure-studio",
+    "label": "Bonaventure Studio",
+    "description": "Site studio de jeux vidéo indépendant",
+    "stack": ["WordPress", "Astra"],
+    "url": "https://bonaventure.games",
+    "thumbs": [
+      "sites/thumb_bonaventure_01.png",
+      "sites/thumb_bonaventure_02.png"
+    ]
+  }
+]

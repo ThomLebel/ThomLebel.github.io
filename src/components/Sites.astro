@@ -1,0 +1,100 @@
+---
+import sites from '../data/sites.json';
+---
+
+<h3 class="subsection-title">Sites & Landings</h3>
+<ul class="sites-grid">
+  {sites.map((site) => (
+    <li class="site-card">
+      <a href={site.url} target="_blank" rel="noopener noreferrer" class="site-card-link">
+        <div class="site-thumbs">
+          <img src={site.thumbs[0]} alt={`${site.label} — aperçu 1`} loading="lazy" class="site-thumb site-thumb-main" />
+          <img src={site.thumbs[1]} alt={`${site.label} — aperçu 2`} loading="lazy" class="site-thumb site-thumb-hover" />
+        </div>
+        <div class="site-meta">
+          <div class="site-meta-top">
+            <span class="banner-client">{site.label}</span>
+            <span class="site-link">Voir le site →</span>
+          </div>
+          <span class="banner-campagne">{site.description}</span>
+          <div class="site-stack">
+            {site.stack.map(tag => <span class="stack-tag">{tag}</span>)}
+          </div>
+        </div>
+      </a>
+    </li>
+  ))}
+</ul>
+
+<style>
+  .sites-grid {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 24px;
+  }
+
+  .site-card {
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    background: var(--surface);
+    transition: border-color 0.3s;
+  }
+
+  .site-card:hover { border-color: rgba(0,200,255,0.3); }
+
+  .site-card-link {
+    display: block;
+    color: inherit;
+  }
+
+  .site-thumbs {
+    position: relative;
+    height: 220px;
+    overflow: hidden;
+  }
+
+  .site-thumb {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    transition: opacity 0.4s ease;
+  }
+
+  .site-thumb-hover { opacity: 0; }
+
+  .site-card:hover .site-thumb-main { opacity: 0; }
+  .site-card:hover .site-thumb-hover { opacity: 1; }
+
+  .site-meta {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .site-meta-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .site-link {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--accent-green);
+    letter-spacing: 0.04em;
+  }
+
+  .site-stack {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+    flex-wrap: wrap;
+  }
+</style>
