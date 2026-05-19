@@ -11,14 +11,14 @@
     ]
   },
   {
-    "name": "thomas-lebel-freelance",
-    "label": "Portfolio Freelance",
-    "description": "Site vitrine freelance",
-    "stack": ["Webflow", "CMS", "Interactions"],
-    "url": "https://thomas-lebel-freelance.webflow.io",
+    "name": "atelier-moreau",
+    "label": "Atelier Moreau",
+    "description": "Site vitrine architecte",
+    "stack": ["Webflow", "Interactions"],
+    "url": "https://atelier-moreau.webflow.io",
     "thumbs": [
-      "sites/thumb_freelance_01.png",
-      "sites/thumb_freelance_02.png"
+      "sites/thumb_design_01.png",
+      "sites/thumb_design_02.png"
     ]
   },
   {
