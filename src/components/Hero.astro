@@ -3,7 +3,10 @@
 
 <section class="hero">
   <div class="hero-inner">
-    <span class="eyebrow">Freelance · Disponible</span>
+    <span class="eyebrow">
+      <span class="dot"></span>
+      Freelance · Disponible
+    </span>
     <h1>Thomas<br>Lebel</h1>
     <p class="hero-sub">Web · Motion · Emailing · Jeux Vidéo</p>
     <a href="#realisations" class="cta-btn">Voir mes projets →</a>
@@ -57,14 +60,33 @@
   }
 
   .eyebrow {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
     font-family: 'Inter', sans-serif;
     font-size: 0.75rem;
     font-weight: 500;
-    letter-spacing: 0.3em;
-    color: var(--accent-cyan);
     text-transform: uppercase;
-    margin-bottom: 24px;
+    color: var(--accent-cyan);
+  }
+
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent-green);
+    flex-shrink: 0;
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% {
+      box-shadow: 0 0 0 0 rgba(0, 245, 160, 0.4);
+    }
+    50% {
+      box-shadow: 0 0 0 6px rgba(0, 245, 160, 0);
+    }
   }
 
   .hero-inner h1 {
@@ -81,5 +103,19 @@
     font-size: 1.1rem;
     color: rgba(240,244,255,0.5);
     margin-bottom: 40px;
+  }
+
+  @media (max-width: 768px) {
+    .hero-inner {
+      padding: 0 24px;
+    }
+
+    .hero-inner h1 {
+      font-size: clamp(2rem, 12vw, 5rem);
+    }
+
+    .hero-sub {
+      font-size: 1rem;
+    }
   }
 </style>

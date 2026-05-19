@@ -12,7 +12,12 @@
   --border: rgba(255,255,255,0.08);
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+  }
 
 html { scroll-behavior: smooth; }
 
@@ -149,4 +154,51 @@ a { text-decoration: none; }
   border-radius: 8px;
   border: 1px solid var(--border);
   display: block;
+}
+
+/* ─── RESPONSIVE MOBILE ────────────────────────────── */
+
+@media (max-width: 768px) {
+
+  /* Navbar */
+  .navbar {
+    padding: 0 20px;
+  }
+
+  .nav {
+    display: none;
+  }
+
+  .nom {
+    font-size: 1rem;
+  }
+
+  /* Sections */
+  .section-block {
+    padding: 60px 20px;
+  }
+
+  .section-title {
+    margin-bottom: 40px;
+  }
+
+  /* Footer */
+  .footer {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 12px;
+    padding: 24px 20px;
+  }
+
+  .footer-links {
+    grid-column: 1;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .footer-copy {
+    grid-column: 1;
+    text-align: center;
+  }
 }

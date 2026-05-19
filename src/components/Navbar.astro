@@ -5,12 +5,51 @@ import links from '../data/links.json';
 <nav class="navbar">
   <div class="nom">Thomas Lebel</div>
   <ul class="nav">
-    <li><a href="#services">Services</a></li>
-    <li><a href="#realisations">Réalisations</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="#services" class="nav-link">Services</a></li>
+    <li><a href="#realisations" class="nav-link">Réalisations</a></li>
+    <li><a href="#contact" class="nav-link">Contact</a></li>
   </ul>
-  <a href={links.cv} target="_blank" class="cv">C.V</a>
+  <div class="nav-right">
+    <a href={links.cv} target="_blank" class="cv">C.V</a>
+    <button class="burger" aria-label="Menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
 </nav>
+
+<div class="mobile-menu">
+  <a href="#services" class="mobile-link">Services</a>
+  <a href="#realisations" class="mobile-link">Réalisations</a>
+  <a href="#contact" class="mobile-link">Contact</a>
+  <a href={links.cv} target="_blank" class="mobile-link">C.V</a>
+</div>
+
+
+<script>
+  const burger = document.querySelector('.burger') as HTMLButtonElement;
+  const mobileMenu = document.querySelector('.mobile-menu') as HTMLElement;
+  const mobileLinks = document.querySelectorAll('.mobile-link');
+
+  burger?.addEventListener('click', () => {
+    burger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+    burger.setAttribute('aria-expanded',
+      burger.classList.contains('open') ? 'true' : 'false'
+    );
+  });
+
+  // Ferme le menu au clic sur un lien
+  mobileLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      burger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+      burger.setAttribute('aria-expanded', 'false');
+    });
+  });
+</script>
+
 
 <style>
   .navbar {
@@ -71,5 +110,87 @@ import links from '../data/links.json';
   .cv:hover {
     background: var(--accent-green);
     color: #0A0F1A;
+  }
+
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .burger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 36px;
+    height: 36px;
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    cursor: pointer;
+    padding: 8px;
+  }
+
+  .burger span {
+    display: block;
+    width: 100%;
+    height: 1.5px;
+    background: var(--text);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+
+  .burger.open span:nth-child(1) {
+    transform: translateY(6.5px) rotate(45deg);
+  }
+
+  .burger.open span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .burger.open span:nth-child(3) {
+    transform: translateY(-6.5px) rotate(-45deg);
+  }
+
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 72px;
+    left: 0;
+    width: 100%;
+    background: rgba(10, 15, 26, 0.97);
+    backdrop-filter: blur(12px);
+    flex-direction: column;
+    padding: 16px 0;
+    z-index: 98;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .mobile-menu.open {
+    display: flex;
+  }
+
+  .mobile-link {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    color: rgba(240,244,255,0.7);
+    padding: 14px 24px;
+    transition: color 0.2s;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .mobile-link:last-child {
+    border-bottom: none;
+    color: var(--accent-green);
+  }
+
+  .mobile-link:hover { color: var(--text); }
+
+  @media (max-width: 768px) {
+    .nav { display: none; }
+    .cv { display: none; }
+    .burger { display: flex; }
   }
 </style>
