@@ -56,13 +56,6 @@
         "agence":"ZEEAGENCY"
     },
     {
-        "name":"Ekwateur",
-        "img":"thumb/thumb_Ekwateur.jpg",
-        "client":"Ekwateur",
-        "campagne":"Ekwateur",
-        "agence":"EKWATEUR"
-    },
-    {
         "name":"Joon",
         "img":"thumb/thumb_Joon_Lancement.jpg",
         "client":"Joon",
@@ -82,13 +75,6 @@
         "client":"La Poste",
         "campagne":"Star Wars MTEL",
         "agence":"BETC"
-    },
-    {
-        "name":"LesNouveauxCavistes",
-        "img":"thumb/thumb_nouveaux_cavistes.jpg",
-        "client":"Les Nouveaux Cavistes",
-        "campagne":"JRE",
-        "agence":"PROXIMITY BBDO"
     },
     {
         "name":"Mazda",
