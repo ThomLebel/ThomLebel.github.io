@@ -162,4 +162,23 @@ const { site } = Astro.props;
   }
 
   .site-desc {
-    font-family
+    font-family: 'Inconsolata', monospace;
+    font-size: 0.72rem;
+    color: var(--color-text-muted);
+    letter-spacing: 0.04em;
+  }
+
+  .site-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 8px;
+  }
+
+  .site-tag {
+    font-family: 'Inconsolata', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.06em;
+    color: var(--color-text-muted);
+  }
+</style>
