@@ -1,121 +1,392 @@
 ---
+import SectionTitle from './ui/SectionTitle.astro';
+import Button from './ui/Button.astro';
+import Polaroid from './ui/Polaroid.astro';
+import TornCard from './ui/TornCard.astro';
 ---
 
 <section class="hero">
-  <div class="hero-inner">
-    <span class="eyebrow">
-      <span class="dot"></span>
-      Freelance · Disponible
-    </span>
-    <h1>Thomas<br>Lebel</h1>
-    <p class="hero-sub">Web · Motion · Emailing · Jeux Vidéo</p>
-    <a href="#realisations" class="cta-btn">Voir mes projets →</a>
+
+  <!-- Grille quadrillée de fond -->
+  <div class="hero-grid-bg" aria-hidden="true"></div>
+
+  <!-- Titre fantôme -->
+  <div class="hero-mega-title" aria-hidden="true">LEBEL</div>
+
+  <!-- Contenu principal -->
+  <div class="hero-content">
+
+    <!-- Badge post-it -->
+    <SectionTitle
+      title="Disponible pour mission"
+      rotate={-1.5}
+      bg="var(--color-accent-2)"
+      tapeColor="rgba(var(--color-accent-rgb), 0.4)"
+      textColor="var(--color-surface)"
+      fontSize="1.2rem"
+      padding="10px 28px"
+    />
+
+    <div class="hero-name">
+      <span class="name-first">Thomas</span>
+      <span class="name-last">
+        Lebel
+        <svg class="underline-sketch" viewBox="0 0 300 20" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M2,14 C40,6 80,18 120,10 C160,2 200,16 240,8 C270,3 290,12 298,14" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round"/>
+        </svg>
+      </span>
+      <p class="hero-role">
+        Intégrateur HTML5 · Bannières GSAP · Emailing MJML
+      </p>
+    </div>
+
+    <p class="hero-desc">
+      Dix ans à concevoir des expériences digitales pour Air France,
+      Orange, ENGIE, Peugeot, La Poste. Freelance depuis 2021,
+      fondateur de Bonaventure Studio.
+    </p>
+
+    <div class="cta-row">
+      <Button text="Voir les projets" href="#realisations" />
+      <Button text="Prendre contact →" href="#contact" variant="ghost" />
+    </div>
+
   </div>
+
+  <!-- Zone droite — photo + stats -->
+  <div class="hero-right">
+
+    <!-- Photo polaroïd -->
+     <Polaroid
+      src="/images/thomas.jpg"
+      alt="Thomas Lebel et Haru"
+      caption="Thomas & Haru"
+      rotate={3}
+    />
+
+    <!-- Torn card stats -->
+    <TornCard rotate={1} width="320px">
+      <p class="torn-label">— Données —</p>
+      <div class="torn-stat">
+        <span class="torn-key">Expérience</span>
+        <span class="torn-val">10 ans</span>
+      </div>
+      <div class="torn-stat">
+        <span class="torn-key">Projets</span>
+        <span class="torn-val">17+</span>
+      </div>
+      <div class="torn-stat">
+        <span class="torn-key">Grands comptes</span>
+        <span class="torn-val">8+</span>
+      </div>
+      <div class="torn-stat">
+        <span class="torn-key">Stack</span>
+        <span class="torn-val torn-val-sm">HTML5 · GSAP · MJML · Webflow · Astro</span>
+      </div>
+      <div class="avail-badge">
+        <span class="avail-dot"></span>
+        Disponible
+      </div>
+    </TornCard>
+
+    <!-- Flèche griffonnée entre polaroid et stats -->
+    <svg class="arrow-sketch" viewBox="0 0 80 60" aria-hidden="true">
+      <path d="M10,10 C20,30 50,35 65,45" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <path d="M58,38 L65,45 L55,48" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+
+  </div>
+
 </section>
 
-<style>
+<style is:global>
+  /* ── HERO ────────────────────────────────────────── */
   .hero {
+    position: relative;
     min-height: 100vh;
-    padding-top: 72px;
-    padding-bottom: 72px;
+    padding-top: 60px;
     display: flex;
     align-items: center;
-    justify-content: center;
-    position: relative;
     overflow: hidden;
+    z-index: 2;
+    gap: 40px;
+    padding-left: 60px;
+    padding-right: 60px;
   }
 
-  .hero::before {
-    content: '';
+  /* Grille quadrillée */
+  .hero-grid-bg {
     position: absolute;
-    width: 600px; height: 600px;
-    border-radius: 50%;
-    background: var(--accent-green);
-    filter: blur(120px);
-    opacity: 0.06;
-    top: 50%; left: 30%;
-    transform: translate(-50%, -50%);
+    inset: 0;
+    background-image:
+      repeating-linear-gradient(
+        rgba(var(--color-text-rgb), 0.04) 0px,
+        rgba(var(--color-text-rgb), 0.04) 1px,
+        transparent 1px,
+        transparent 240px
+      ),
+      repeating-linear-gradient(
+        90deg,
+        rgba(var(--color-text-rgb), 0.04) 0px,
+        rgba(var(--color-text-rgb), 0.04) 1px,
+        transparent 1px,
+        transparent 240px
+      );
     pointer-events: none;
   }
 
-  .hero::after {
-    content: '';
+  /* Titre fantôme */
+  .hero-mega-title {
     position: absolute;
-    width: 500px; height: 500px;
-    border-radius: 50%;
-    background: var(--accent-blue);
-    filter: blur(100px);
-    opacity: 0.08;
-    top: 50%; left: 70%;
-    transform: translate(-50%, -50%);
+    top: 50%;
+    left: -20px;
+    transform: translateY(-55%);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(8rem, 20vw, 18rem);
+    line-height: 0.85;
+    color: rgba(var(--color-text-rgb), 0.08);
     pointer-events: none;
+    white-space: nowrap;
+    user-select: none;
   }
 
-  .hero-inner {
+  /* Contenu gauche */
+  .hero-content {
     position: relative;
-    z-index: 1;
-    text-align: center;
-    max-width: 1000px;
-    padding: 0 40px;
+    max-width: 540px;
+    z-index: 2;
+    flex-shrink: 0;
   }
 
-  .eyebrow {
+  /* ── NOM ─────────────────────────────────────────── */
+  .hero-name {
+    position: relative;
+    margin-bottom: 28px;
+  }
+
+  .name-first {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    font-weight: 900;
+    font-style: italic;
+    color: var(--color-text);
+    display: block;
+    line-height: 1;
+    animation: slideIn 0.8s ease 0.2s both;
+  }
+
+  .name-last {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(4rem, 10vw, 8rem);
+    color: var(--color-accent);
+    display: inline-block;
+    line-height: 0.9;
+    letter-spacing: 0.05em;
+    margin-left: -4px;
+    text-shadow: 3px 3px 0 var(--color-accent-dim);
+    animation: slideIn 0.8s ease 0.35s both;
+    position: relative;
+  }
+
+  /* Soulignement griffonné */
+  .underline-sketch {
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 100%;
+    height: 20px;
+    color: var(--color-accent-2);
+    opacity: 0.7;
+  }
+
+  .hero-role {
+    font-family: 'Inconsolata', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    margin-top: 16px;
+    animation: fadeUp 0.8s ease 0.5s both;
+  }
+
+  .hero-desc {
+    font-family: 'Caveat', cursive;
+    font-size: 1.2rem;
+    line-height: 1.85;
+    color: var(--color-text-muted);
+    max-width: 460px;
+    margin-bottom: 36px;
+    border-left: 2px solid var(--color-danger);
+    padding-left: 16px;
+    animation: fadeUp 0.8s ease 0.6s both;
+  }
+
+  .cta-row {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+    flex-wrap: wrap;
+    animation: fadeUp 0.8s ease 0.75s both;
+  }
+
+  /* ── ZONE DROITE ─────────────────────────────────── */
+  .hero-right {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 24px;
+    align-items: start;
+    z-index: 2;
+    flex: 1;
+  }
+  /* ── POLAROÏD ────────────────────────────────────── */
+  .hero-right .polaroid{
+    grid-column: 1;
+    grid-row: 1;
+    justify-self: center;
+  }
+
+  /* ── FLÈCHE GRIFFONNÉE ───────────────────────────── */
+  .arrow-sketch {
+    width: 80px;
+    height: 60px;
+    color: var(--color-text-faint);
+    transform: rotate(-10deg);
+    opacity: 0.6;
+    align-self: flex-start;
+    margin-left: 150px;
+    grid-column: 2;
+    grid-row: 2;
+    justify-self: start;
+  }
+
+  /* ── TORN CARD — fiche bristol ───────────────────── */
+  .hero-right .torn-card{
+    width: 60%;
+    grid-column: 2;
+    grid-row: 2;
+    justify-self: end;
+  }
+
+  .torn-label {
+    font-family: 'Caveat', cursive;
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    margin-bottom: 16px;
+    text-align: center;
+  }
+
+  .torn-stat {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 8px 0;
+    border-bottom: 1px dashed rgba(var(--color-text-rgb), 0.12);
+  }
+
+  .torn-stat:last-of-type { border-bottom: none; }
+
+  .torn-key {
+    font-family: 'Inconsolata', monospace;
+    font-size: 0.72rem;
+    color: var(--color-text-muted);
+  }
+
+  .torn-val {
+    font-family: 'Caveat', cursive;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--color-accent);
+  }
+
+  .torn-val-sm {
+    font-family: 'Inconsolata', monospace;
+    font-size: 0.7rem;
+    font-weight: 400;
+    color: var(--color-text-muted);
+  }
+
+  .avail-badge {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 8px;
-    font-family: 'Inter', sans-serif;
-    font-size: 0.75rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    color: var(--accent-cyan);
+    gap: 6px;
+    margin-top: 14px;
+    font-family: 'Caveat', cursive;
+    font-size: 0.9rem;
+    color: var(--color-accent-2);
   }
 
-  .dot {
-    width: 8px;
-    height: 8px;
+  .avail-dot {
+    width: 6px; height: 6px;
     border-radius: 50%;
-    background: var(--accent-green);
+    background: var(--color-accent-2);
+    box-shadow: 0 0 6px var(--color-accent-2);
+    animation: blink 2s ease-in-out infinite;
     flex-shrink: 0;
-    animation: pulse 2s ease-in-out infinite;
   }
 
-  @keyframes pulse {
-    0%, 100% {
-      box-shadow: 0 0 0 0 rgba(0, 245, 160, 0.4);
-    }
-    50% {
-      box-shadow: 0 0 0 6px rgba(0, 245, 160, 0);
-    }
+  /* ── ANIMATIONS ──────────────────────────────────── */
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateX(-30px); }
+    to   { opacity: 1; transform: translateX(0); }
   }
 
-  .hero-inner h1 {
-    font-family: 'Syne', sans-serif;
-    font-size: clamp(3rem, 10vw, 8rem);
-    font-weight: 800;
-    line-height: 1;
-    color: var(--text);
-    margin-bottom: 24px;
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
   }
 
-  .hero-sub {
-    font-family: 'Inter', sans-serif;
-    font-size: 1.1rem;
-    color: rgba(240,244,255,0.5);
-    margin-bottom: 40px;
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-10px) rotate(-1.5deg); }
+    to   { opacity: 1; transform: translateY(0) rotate(-1.5deg); }
   }
 
-  @media (max-width: 768px) {
-    .hero-inner {
-      padding: 0 24px;
-    }
-
-    .hero-inner h1 {
-      font-size: clamp(2rem, 12vw, 5rem);
-    }
-
-    .hero-sub {
-      font-size: 1rem;
-    }
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.3; }
   }
+
+  /* ── RESPONSIVE ──────────────────────────────────── */
+  @media (max-width: 900px) {
+  .hero {
+    flex-direction: column;
+    padding: 80px 24px 60px;
+    gap: 32px;
+    align-items: stretch;
+  }
+
+  .hero-right {
+    position: relative;
+    right: auto;
+    top: auto;
+    transform: none;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    order: -1;
+  }
+
+  .hero-content {
+    max-width: 100%;
+  }
+
+  .hero-mega-title { display: none; }
+  .arrow-sketch    { display: none; }
+
+  /* TornCard pleine largeur */
+  .torn-card {
+    display:none;
+  }
+
+  .polaroid {
+    width: 180px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-role { display: none; }
+}
 </style>

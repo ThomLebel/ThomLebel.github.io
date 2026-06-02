@@ -1,0 +1,18 @@
+[
+  {
+    "name": "marbleous",
+    "title": "Marbleous!",
+    "description": "Un jeu de billes casual et coloré — vise, charge et lance des billes pour les faire fusionner !",
+    "platforms": [
+      { "id": "android", "label": "Android", "url": "https://play.google.com/store/apps/details?id=com.bonaventure.marbleous" },
+      { "id": "ios", "label": "iOS", "url": "https://apps.apple.com/fr/app/marbleous/id6755726542" },
+      { "id": "web", "label": "Web", "url": "https://bonaventurestudio.itch.io/marbleous" }
+    ],
+    "images": [
+      "games/marbleous/logo.jpg",
+      "games/marbleous/leaderboard.png",
+      "games/marbleous/game.png"
+    ],
+    "url": "https://bonaventure.games"
+  }
+]

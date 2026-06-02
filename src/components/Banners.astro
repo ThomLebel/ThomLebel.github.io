@@ -1,74 +1,128 @@
 ---
+import Tag from './ui/Tag.astro';
+import SectionHeader from './ui/SectionHeader.astro';
 import banners from '../data/banners.json';
 ---
 
-<h3 class="subsection-title">Bannières HTML5</h3>
-<ul class="bannieres-grid">
-  {banners.map((banner) => (
-    <li class="banner-card" data-name={banner.name}>
-      <img src={banner.img} alt={`${banner.client} - ${banner.campagne}`} loading="lazy" />
-      <div class="banner-info">
-        <span class="banner-client">{banner.client}</span>
-        <span class="banner-campagne">{banner.campagne}</span>
-        <span class="banner-agence">{banner.agence}</span>
-        <div class="banner-cta">VOIR LE FORMAT</div>
-      </div>
-    </li>
-  ))}
-</ul>
+<div class="banners-block">
+  <SectionHeader
+    label="Bannières publicitaires"
+    title="HTML5 & GSAP"
+    labelColor="gold"
+    bgNum="03"
+  />
 
-<style>
+  <ul class="bannieres-grid">
+    {banners.map((banner) => (
+      <li class="banner-card" data-name={banner.name}>
+        <img
+          src={banner.img}
+          alt={`${banner.client} — ${banner.campagne}`}
+          loading="lazy"
+        />
+        <div class="banner-info">
+          <span class="banner-client">{banner.client}</span>
+          <span class="banner-campagne">{banner.campagne}</span>
+          <div class="banner-tags">
+            <Tag text={banner.agence} color="gold" />
+          </div>
+          <p class="banner-cta">Voir le format →</p>
+        </div>
+      </li>
+    ))}
+  </ul>
+</div>
+
+<style is:global>
+  .banners-block {
+    margin-bottom: 80px;
+  }
+
   .bannieres-grid {
     list-style: none;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 16px;
   }
 
   .banner-card {
     position: relative;
-    border-radius: 16px;
     overflow: hidden;
     cursor: pointer;
     border: 1px solid var(--border);
     aspect-ratio: 300 / 250;
-    transition: border-color 0.3s;
+    transition: all 0.3s ease;
   }
 
-  .banner-card:hover { border-color: rgba(0,200,255,0.3); }
+  /* Inclinaison aléatoire subtile au hover */
+  .banner-card:hover {
+    border-color: var(--color-border-hi);
+    box-shadow: 4px 4px 0 var(--color-accent-dim);
+    transform: translate(-2px, -2px);
+    z-index: 2;
+  }
 
   .banner-card img {
     width: 100%; height: 100%;
     object-fit: cover;
     display: block;
+    transition: transform 0.4s ease;
+  }
+
+  .banner-card:hover img {
+    transform: scale(1.03);
   }
 
   .banner-info {
     position: absolute;
     inset: 0;
-    background: rgba(10,15,26,0.88);
+    background: rgba(var(--color-bg-rgb),0.92);
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     padding: 20px;
     opacity: 0;
-    transition: opacity 0.3s;
+    transition: opacity 0.3s ease;
   }
 
   .banner-card:hover .banner-info { opacity: 1; }
 
-  .banner-agence {
-    font-size: 0.75rem;
-    color: var(--accent-cyan);
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    margin-top: 4px;
+  .banner-client {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    font-style: italic;
+    color: var(--color-text);
+    display: block;
   }
 
+  .banner-campagne {
+    font-family: 'Inconsolata', monospace;
+    font-size: 0.72rem;
+    color: var(--color-text-muted);
+    letter-spacing: 0.06em;
+    margin-top: 2px;
+    display: block;
+  }
+
+  .banner-tags {
+    margin-top: 8px;
+  }
+
+  .banner-cta {
+    font-family: 'Inconsolata', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-accent-2);
+    margin-top: 10px;
+  }
+
+  /* ── RESPONSIVE ──────────────────────────────────── */
   @media (max-width: 768px) {
     .bannieres-grid {
       grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-      gap: 12px;
+      gap: 10px;
     }
   }
 </style>

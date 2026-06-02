@@ -1,5 +1,16 @@
 ---
 import '../styles/global.css'
+import ThemeSwitch from '../components/ui/ThemeSwitch.astro';
+
+interface Props{
+	title?: string;
+	description?: string;
+}
+
+const {
+	title = 'Thomas Lebel — Intégrateur HTML5 · Bannières GSAP · Emailing MJML',
+	description = 'Portfolio de Thomas Lebel, intégrateur HTML5 spécialisé bannières GSAP, emailing MJML et intégration CMS. Clients : Air France, Orange, ENGIE, Renault, Peugeot.'
+} = Astro.props;
 ---
 
 <!doctype html>
@@ -7,17 +18,48 @@ import '../styles/global.css'
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
+		<meta name="description" content={description} />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Thomas Lebel — Intégrateur HTML5 · Bannières · Emailing</title>
-		<meta name="description" content="Portfolio de Thomas Lebel, intégrateur HTML5 spécialisé bannières GSAP, emailing MJML et intégration CMS. Clients : Air France, Orange, ENGIE, Renault, Peugeot.">
+		<title>{title}</title>
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    	<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Bebas+Neue&family=Inconsolata:wght@300;400;500;700&family=Caveat:wght@400;600;700&display=swap" rel="stylesheet">
 		<script src="https://use.fontawesome.com/b20abecad8.js"></script>
 	</head>
 	<body>
+		<div class="fireflies" id="fireflies"></div>
 		<slot />
+		<ThemeSwitch />
 	</body>
 </html>
+
+<script>
+  // Lucioles
+  const container = document.getElementById('fireflies');
+  if (container) {
+    for (let i = 0; i < 20; i++) {
+      const f = document.createElement('div');
+      f.className = 'firefly';
+      f.style.cssText = `
+        left: ${Math.random() * 100}%;
+        top: ${Math.random() * 100}%;
+        --tx: ${(Math.random() - 0.5) * 120}px;
+        --ty: ${(Math.random() - 0.5) * 120}px;
+        --dur: ${7 + Math.random() * 8}s;
+        --delay: ${-Math.random() * 10}s;
+      `;
+      container.appendChild(f);
+    }
+  }
+
+  // Scroll reveal global
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) e.target.classList.add('visible');
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>

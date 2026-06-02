@@ -1,0 +1,72 @@
+---
+interface Props{
+    text: string;
+    href: string;
+    variant?: 'primary' | 'ghost';
+    rotate?: number;
+    target?: '_blank' | '_self';
+}
+
+const {
+    text,
+    href,
+    variant = 'primary',
+    rotate = 0,
+    target = '_self'
+} = Astro.props;
+
+const style = rotate !== 0 ? `transform: rotate(${rotate}deg)` : '';
+---
+
+<a href={href} target={target} class={`btn btn-${variant}`} style={style}>
+    {text}
+</a>
+
+<style>
+  .btn {
+    font-family: 'Inconsolata', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.25s;
+    position: relative;
+  }
+
+  .btn-primary {
+    color: var(--color-bg);
+    background: var(--color-accent);
+    padding: 12px 24px;
+  }
+
+  .btn-primary::after {
+    content: '';
+    position: absolute;
+    bottom: -3px; right: -3px;
+    width: 100%; height: 100%;
+    border: 1px solid var(--color-accent-dim);
+    z-index: -1;
+  }
+
+  .btn-primary:hover {
+    background: var(--color-accent-2);
+    transform: translate(-3px, -3px) rotate(0deg) !important;
+  }
+
+  .btn-ghost {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 0.9rem;
+    letter-spacing: 0.02em;
+    text-transform: none;
+    color: var(--color-text-muted);
+    border-bottom: 1px dashed var(--color-text-muted);
+    padding-bottom: 2px;
+  }
+
+  .btn-ghost:hover {
+    color: var(--color-accent);
+    border-color: var(--color-accent);
+  }
+</style>

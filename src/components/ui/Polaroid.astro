@@ -1,0 +1,62 @@
+---
+interface Props {
+  src: string;
+  alt: string;
+  caption?: string;
+  rotate?: number;
+}
+
+const { src, alt, caption, rotate = 3 } = Astro.props;
+---
+
+<div class="polaroid" style={`--rotate: ${rotate}deg`}>
+  <div class="polaroid-tape"></div>
+  <img src={src} alt={alt} class="polaroid-img" />
+  {caption && <p class="polaroid-caption">{caption}</p>}
+</div>
+
+<style is:global>
+  .polaroid {
+    background: #fff;
+    padding: 12px 12px 12px;
+    box-shadow: 4px 4px 0 rgba(var(--color-text-rgb), 0.15),
+                8px 8px 20px rgba(var(--color-text-rgb), 0.1);
+    transform: rotate(var(--rotate));
+    position: relative;
+    width: 280px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .polaroid:hover {
+    transform: rotate(calc(var(--rotate) / 2)) scale(1.03);
+    box-shadow: 6px 6px 0 rgba(var(--color-text-rgb), 0.15),
+                12px 12px 28px rgba(var(--color-text-rgb), 0.12);
+  }
+
+  .polaroid-tape {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 16px;
+    background: rgba(var(--color-accent-rgb), 0.3);
+    z-index: 1;
+  }
+
+  .polaroid-img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    display: block;
+    filter: grayscale(20%);
+  }
+
+  .polaroid-caption {
+    font-family: 'Caveat', cursive;
+    font-size: 2rem;
+    color: var(--color-text-muted);
+    text-align: center;
+    padding-top: 8px;
+  }
+</style>

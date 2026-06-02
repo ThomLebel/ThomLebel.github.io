@@ -1,0 +1,278 @@
+---
+interface Props {
+  category: 'bannieres' | 'emails' | 'sites' | 'jeux';
+  title: string;
+  icon: string;
+  description: string;
+  tags: readonly string[];
+  index: number;
+}
+
+const { category, title, icon, description, tags, index } = Astro.props;
+
+const tabColors: Record<string, string> = {
+  bannieres: '#C4501A',
+  emails:    '#2D7A3A',
+  sites:     '#4A7A9B',
+  jeux:      '#8B4A2A',
+};
+
+const tabColor = tabColors[category];
+---
+
+<button
+  class="floating-card folder-card"
+  data-category={category}
+  data-index={index}
+  aria-label={`Voir les projets ${title}`}
+  style={`--tab-color: ${tabColor}`}
+>
+  <!-- Dos du dossier (toujours visible) -->
+  <div class="folder-back">
+    <div class="folder-tab">
+      <span class="folder-tab-label">{title}</span>
+    </div>
+  </div>
+
+  <!-- Feuilles blanches à l'intérieur -->
+  <div class="folder-paper folder-paper-1"></div>
+  <div class="folder-paper folder-paper-2"></div>
+  <div class="folder-paper folder-paper-3"></div>
+
+  <!-- Couverture avant — celle qui pivote -->
+  <div class="folder-cover">
+    <div class="folder-content">
+      <div class="folder-icon" set:html={icon}></div>
+      <h3 class="folder-title">{title}</h3>
+      <p class="folder-desc">{description}</p>
+      <div class="folder-tags">
+        {tags.map((tag, i) => (
+          <span class="folder-tag">
+            {i > 0 && <span class="tag-sep"> · </span>}
+            #{tag}
+          </span>
+        ))}
+      </div>
+      <span class="folder-hint">Explorer →</span>
+    </div>
+  </div>
+
+</button>
+
+<style is:global>
+  /* ── DOSSIER ─────────────────────────────────────── */
+.folder-card {
+  position: absolute;
+  width: 300px;
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding: 0;
+  text-align: left;
+  perspective: 2500px;
+}
+
+/* Dos du dossier */
+.folder-back {
+  width: 100%;
+  min-height: 320px;
+  border-radius: 4px;
+  background: #B8864E;
+  background: linear-gradient(to bottom, #C4956A 0%, #B8864E 40%, #A07040 100%);
+  box-shadow: inset 3px -5px 10px -5px rgba(0,0,0,0.4);
+  position: relative;
+}
+
+/* Onglet sur le dos */
+.folder-tab {
+  position: absolute;
+  top: -28px;
+  left: 20px;
+  height: 30px;
+  min-width: 100px;
+  background: var(--tab-color);
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  clip-path: polygon(0 100%, 0 30%, 8px 0, calc(100% - 8px) 0, 100% 30%, 100% 100%);
+  z-index: -1;
+}
+
+.folder-tab-label {
+  font-family: 'Caveat', cursive;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff;
+  white-space: nowrap;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+/* Feuilles intérieures */
+.folder-paper {
+  background: #FEFAE0;
+  height: 80px;
+  box-shadow: 0px 0px 4px 1px rgba(0,0,0,0.2);
+  position: absolute;
+  left: 0; right: 0;
+  top: 10px;
+  margin: 0 40px;
+  opacity: 0;
+  transform: translateY(80px);
+  z-index: 2;
+}
+
+.folder-paper-2 {
+  margin: 0 48px;
+  top: 16px;
+}
+
+.folder-paper-3 {
+  margin: 0 36px;
+  top: 22px;
+}
+
+/* Couverture avant */
+.folder-cover {
+  width: 100%;
+  min-height: 320px;
+  border-radius: 4px 0 4px 4px;
+  background: linear-gradient(to bottom, #E0B878 0%, #D4A96A 70%, #C49050 100%);
+  background-image: 
+    repeating-linear-gradient(
+      90deg,
+      rgba(0,0,0,0.03) 0px,
+      rgba(0,0,0,0.03) 1px,
+      transparent 1px,
+      transparent 12px
+    ),
+    linear-gradient(to bottom, #E0B878 0%, #D4A96A 70%, #C49050 100%);
+  box-shadow: inset 3px -5px 10px -5px rgba(0,0,0,0.3);
+  position: absolute;
+  top: 0; left: 0;
+  z-index: 5;
+  transform-origin: center bottom;
+}
+
+.folder-content {
+  padding: 24px 28px 32px;
+}
+
+.folder-icon {
+  color: rgba(0,0,0,0.35);
+  width: 28px;
+  height: 28px;
+  margin-bottom: 12px;
+}
+
+.folder-icon svg {
+  width: 100%;
+  height: 100%;
+  stroke: rgba(0,0,0,0.35);
+}
+
+.folder-title {
+  font-family: 'Caveat', cursive;
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: rgba(0,0,0,0.8);
+  margin-bottom: 10px;
+  line-height: 1.1;
+}
+
+.folder-desc {
+  font-family: 'Inconsolata', monospace;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: rgba(0,0,0,0.7);
+  margin-bottom: 14px;
+  letter-spacing: 0.02em;
+}
+
+.folder-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-bottom: 16px;
+}
+
+.folder-tag {
+  font-family: 'Inconsolata', monospace;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  letter-spacing: 0.04em;
+}
+
+.tag-sep { opacity: 0.4; }
+
+.folder-hint {
+  font-family: 'Caveat', cursive;
+  font-size: 1.2rem;
+  color: var(--tab-color);
+  font-weight: 700;
+  opacity: 0;
+  display: block;
+  transition: opacity 0.3s ease;
+}
+
+.folder-card:hover .folder-hint { opacity: 1; }
+
+.folder-card:hover .folder-cover {
+  box-shadow: inset 3px -5px 10px -5px rgba(0,0,0,0.3),
+              0 -4px 12px rgba(0,0,0,0.1);
+}
+
+/* Ombre portée */
+.folder-card::before {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 10%; right: 10%;
+  height: 10px;
+  background: rgba(0,0,0,0.15);
+  filter: blur(6px);
+  border-radius: 50%;
+  z-index: 0;
+}
+
+/* ── ANIMATIONS FLOTTEMENT ───────────────────────── */
+.folder-card[data-index="0"] { animation: float-0 6s ease-in-out infinite 0s; }
+.folder-card[data-index="1"] { animation: float-1 7s ease-in-out infinite -2s; }
+.folder-card[data-index="2"] { animation: float-2 5.5s ease-in-out infinite -1s; }
+.folder-card[data-index="3"] { animation: float-3 8s ease-in-out infinite -3s; }
+
+@keyframes float-0 {
+  0%, 100% { transform: translateY(0px) rotate(-1deg); }
+  50%       { transform: translateY(-14px) rotate(0.5deg); }
+}
+@keyframes float-1 {
+  0%, 100% { transform: translateY(-8px) rotate(1.5deg); }
+  50%       { transform: translateY(8px) rotate(-0.5deg); }
+}
+@keyframes float-2 {
+  0%, 100% { transform: translateY(4px) rotate(0.5deg); }
+  50%       { transform: translateY(-12px) rotate(-1deg); }
+}
+@keyframes float-3 {
+  0%, 100% { transform: translateY(-4px) rotate(-1.5deg); }
+  50%       { transform: translateY(10px) rotate(1deg); }
+}
+
+/* ── ÉTAT ACTIF ──────────────────────────────────── */
+.folder-card.card-active {
+  animation: none !important;
+  transform: rotate(0deg) !important;
+  position: relative !important;
+  top: auto !important;
+  left: auto !important;
+  pointer-events: none;
+  width: 300px;
+}
+
+.folder-card.fade-out {
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.9) !important;
+  animation: none !important;
+}
+</style>

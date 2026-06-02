@@ -1,0 +1,101 @@
+---
+import BannerCard from './BannerCard.astro';
+import EmailCard from './EmailCard.astro';
+import SiteCard from './SiteCard.astro';
+import GameCard from './GameCard.astro';
+
+import banners from '../../data/banners.json';
+import emails from '../../data/emails.json';
+import sites from '../../data/sites.json';
+import games from '../../data/games.json';
+
+interface Props {
+  category: 'bannieres' | 'emails' | 'sites' | 'jeux';
+}
+
+const { category } = Astro.props;
+---
+
+<div class="project-grid">
+
+  {category === 'bannieres' && (
+    <ul class="grid-bannieres">
+      {banners.map(banner => (
+        <BannerCard banner={banner} />
+      ))}
+    </ul>
+  )}
+
+  {category === 'emails' && (
+    <ul class="grid-emails">
+      {emails.map(email => (
+        <EmailCard email={email} />
+      ))}
+    </ul>
+  )}
+
+  {category === 'sites' && (
+    <ul class="grid-sites">
+      {sites.map(site => (
+        <SiteCard site={site} />
+      ))}
+    </ul>
+  )}
+
+  {category === 'jeux' && (
+    <div class="grid-jeux">
+      {games.map(game => (
+        <GameCard game={game} />
+      ))}
+    </div>
+  )}
+
+</div>
+
+<style is:global>
+  .project-grid {
+    width: 100%;
+    animation: fadeUp 0.4s ease both;
+  }
+
+  /* Bannières */
+  .grid-bannieres {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 16px;
+  }
+
+  /* Emails */
+  .grid-emails {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+  }
+
+  /* Sites */
+  .grid-sites {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+  }
+
+  /* Jeux */
+  .grid-jeux {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 24px;
+    max-width: 560px;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── RESPONSIVE ──────────────────────────────────── */
+  @media (max-width: 768px) {
+    .grid-bannieres {
+      grid-template-columns: repeat(auto-fill, minmax(15

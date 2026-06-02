@@ -1,67 +1,52 @@
 ---
-import Tag from './ui/Tag.astro';
-import SectionHeader from './ui/SectionHeader.astro';
-import emails from '../data/emails.json';
+interface Props {
+  email: {
+    name: string;
+    label: string;
+    description: string;
+    stack: string[];
+  };
+}
+
+const { email } = Astro.props;
 ---
 
-<div class="emails-block">
-  <SectionHeader
-    label="Templates email"
-    title="MJML & Responsive"
-    labelColor="gold"
-  />
-
-  <ul class="emails-grid">
-    {emails.map((email) => (
-      <li class="email-card" data-name={email.name}>
-        <div class="email-preview">
-          <iframe
-            src={`/emails/${email.name}/index.html`}
-            scrolling="no"
-            tabindex="-1"
-            title={email.label}
-          ></iframe>
-          <div class="email-overlay">
-            <p class="email-cta">Voir le template →</p>
-          </div>
-        </div>
-        <div class="email-meta">
-          <div class="email-meta-top">
-            <span class="email-label">{email.label}</span>
-          </div>
-          <span class="email-desc">{email.description}</span>
-          <div class="email-tags">
-            {email.stack.map(tag => (
-              <Tag text={tag} color="dim" />
-            ))}
-          </div>
-        </div>
-      </li>
-    ))}
-  </ul>
-</div>
+<li class="email-card" data-name={email.name}>
+  <div class="email-preview">
+    <iframe
+      src={`/emails/${email.name}/index.html`}
+      scrolling="no"
+      tabindex="-1"
+      title={email.label}
+    ></iframe>
+    <div class="email-overlay">
+      <p class="email-cta">Voir le template →</p>
+    </div>
+  </div>
+  <div class="email-meta">
+    <span class="email-label">{email.label}</span>
+    <span class="email-desc">{email.description}</span>
+    <div class="email-tags">
+      {email.stack.map((tag, i) => (
+        <span class="email-tag">
+          {i > 0 && <span class="tag-sep"> · </span>}
+          #{tag}
+        </span>
+      ))}
+    </div>
+  </div>
+</li>
 
 <style is:global>
-  .emails-block {
-    margin-bottom: 80px;
-  }
-
-  .emails-grid {
-    list-style: none;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
-  }
-
   .email-card {
     border: 1px solid var(--border);
     background: var(--color-surface);
     cursor: pointer;
     transition: all 0.3s ease;
     position: relative;
+    list-style: none;
   }
 
-  /* Coin replié — cohérent avec la torn-card du hero */
   .email-card::before {
     content: '';
     position: absolute;
@@ -71,7 +56,6 @@ import emails from '../data/emails.json';
     border-width: 0 18px 18px 0;
     border-color: transparent var(--color-bg) transparent transparent;
     z-index: 1;
-    transition: border-width 0.3s;
   }
 
   .email-card:hover {
@@ -112,7 +96,8 @@ import emails from '../data/emails.json';
 
   .email-cta {
     font-family: 'Inconsolata', monospace;
-    font-size: 0.65rem;
+    font-size: 0.85rem;
+    font-weight: 700;
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--color-accent-2);
@@ -123,12 +108,6 @@ import emails from '../data/emails.json';
     display: flex;
     flex-direction: column;
     gap: 4px;
-  }
-
-  .email-meta-top {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
   }
 
   .email-label {
@@ -148,15 +127,15 @@ import emails from '../data/emails.json';
 
   .email-tags {
     display: flex;
-    gap: 10px;
+    gap: 8px;
     flex-wrap: wrap;
     margin-top: 8px;
   }
 
-  /* ── RESPONSIVE ──────────────────────────────────── */
-  @media (max-width: 768px) {
-    .emails-grid {
-      grid-template-columns: 1fr;
-    }
+  .email-tag {
+    font-family: 'Inconsolata', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.06em;
+    color: var(--color-text-muted);
   }
 </style>

@@ -1,0 +1,23 @@
+---
+interface Props{
+    text: string;
+    color?: 'green' | 'gold' | 'red' | 'dim';
+}
+
+const { text, color = 'dim' } = Astro.props;
+---
+
+<span class={`tag tag-${color}`} >#{text}</span>
+
+<style>
+    .tag{
+        font-family: 'Inconsolata', monospace;
+        font-size: 0.65rem;
+        letter-spacing: 0.06em;
+    }
+
+    .tag-green { color: var(--color-accent-2); }
+    .tag-gold  { color: var(--color-accent); }
+    .tag-red   { color: var(--color-danger); }
+    .tag-dim   { color: var(--color-text-muted); }
+</style>

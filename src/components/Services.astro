@@ -1,89 +1,135 @@
 ---
-const services = [
+import SectionHeader from './ui/SectionHeader.astro';
+import Tag from './ui/Tag.astro';
+
+interface Service {
+  num: string;
+  title: string;
+  tags: string[];
+}
+
+const services: Service[] = [
   {
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>`,
-    title: "Web",
-    description: "Landing pages, intégration CMS, Webflow — des sites qui convertissent."
+    num: '01.',
+    title: 'Intégration Web',
+    tags: ['HTML5', 'CSS', 'Webflow', 'Astro'],
   },
   {
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>`,
-    title: "Motion",
-    description: "Bannières HTML5, animations GSAP, motion design — du mouvement qui capte l'attention."
+    num: '02.',
+    title: 'Motion & Bannières',
+    tags: ['GSAP', 'After Effects', 'HTML5 Ads'],
   },
   {
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>`,
-    title: "Emailing",
-    description: "Intégration MJML, Actito, Brevo — des emails qui arrivent et qui performent."
+    num: '03.',
+    title: 'Emailing MJML',
+    tags: ['MJML', 'Actito', 'Brevo', 'Responsive'],
   },
   {
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M12 12h.01"/><path d="M7 12h.01"/><path d="M17 12h.01"/></svg>`,
-    title: "Jeux Vidéo",
-    description: "Conception et développement de jeux indépendants — de l'idée au joueur."
-  }
+    num: '04.',
+    title: 'Jeux Vidéo',
+    tags: ['Godot', 'GDScript', 'Blender'],
+  },
 ];
 ---
 
-<section id="services" class="section-block">
-  <p class="section-eyebrow">MES SERVICES</p>
-  <h2 class="section-title">Ce que je fais</h2>
-  <div class="services-grid">
-    {services.map(service => (
-      <div class="service-card">
-        <div class="service-icon" set:html={service.icon} />
-        <h3>{service.title}</h3>
-        <p>{service.description}</p>
+<section id="services" class="section-block services-section reveal">
+  <div class="services-list">
+    {services.map((service) => (
+      <div class="service-line">
+        <span class="service-num">{service.num}</span>
+        <h3 class="service-title">{service.title}</h3>
+        <div class="service-tags">
+          {service.tags.map(tag => (
+            <Tag text={tag} color="dim" />
+          ))}
+        </div>
       </div>
     ))}
   </div>
 </section>
 
-<style>
-  .services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+<style is:global>
+  .services-section {
+    max-width: 100%;
+    padding: 80px 60px;
+  }
+
+  .services-list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .service-line {
+    display: flex;
+    align-items: baseline;
     gap: 24px;
+    padding: 28px 0;
+    border-bottom: 1px solid var(--border);
+    cursor: default;
+    transition: padding-left 0.3s ease;
+    position: relative;
   }
 
-  .service-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 24px;
-    padding: 40px 32px;
-    transition: border-color 0.3s;
+  .service-line:first-child {
+    border-top: 1px solid var(--border);
   }
 
-  .service-card:hover {
-    border-color: rgba(0,200,255,0.3);
+  .service-line:hover {
+    padding-left: 16px;
   }
 
-  .service-icon {
-    color: var(--accent-cyan);
-    margin-bottom: 20px;
-    width: 24px;
-    height: 24px;
+  .service-line:hover .service-title {
+    color: var(--color-accent);
   }
 
-  .service-card h3 {
-    font-family: 'Syne', sans-serif;
-    font-size: 1.2rem;
+  .service-line:hover .service-num {
+    color: var(--color-danger);
+  }
+
+  .service-num {
+    font-family: 'Inconsolata', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    color: var(--color-text-faint);
+    min-width: 32px;
+    transition: color 0.3s;
+  }
+
+  .service-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3.2rem);
     font-weight: 700;
-    margin-bottom: 12px;
-    color: var(--text);
+    font-style: italic;
+    color: var(--color-text);
+    flex: 1;
+    line-height: 1;
+    transition: color 0.3s;
   }
 
-  .service-card p {
-    font-size: 0.9rem;
-    line-height: 1.7;
-    color: rgba(240,244,255,0.5);
+  .service-tags {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    max-width: 200px;
+    align-items: center;
   }
 
+  /* ── RESPONSIVE ──────────────────────────────────── */
   @media (max-width: 768px) {
-    .services-grid {
-      grid-template-columns: 1fr;
+    .service-line {
+      flex-wrap: wrap;
+      gap: 12px;
     }
 
-    .service-card {
-      padding: 28px 24px;
+    .service-tags {
+      justify-content: flex-start;
+      max-width: 100%;
+      padding-left: 56px;
+    }
+
+    .service-title {
+      font-size: clamp(1.8rem, 8vw, 2.5rem);
     }
   }
 </style>

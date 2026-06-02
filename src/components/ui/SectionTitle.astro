@@ -1,0 +1,68 @@
+---
+interface Props {
+  title: string;
+  rotate?: number;
+  bg?: string;
+  tapeColor?: string;
+  textColor?: string;
+  fontSize?: string;
+  padding?: string;
+}
+
+const {
+  title,
+  rotate = -1.5,
+  bg = 'var(--color-accent-2)',
+  tapeColor = 'rgba(var(--color-accent-rgb), 0.3)',
+  textColor = '#fff',
+  fontSize = '2.5rem',
+  padding = '8px 24px',
+} = Astro.props;
+---
+
+<div class="section-title-wrap" style={`
+  --rotate: ${rotate}deg;
+  --bg: ${bg};
+  --tape: ${tapeColor};
+  --text: ${textColor};
+  --fs: ${fontSize};
+  --pad: ${padding};
+`}>
+  <span class="section-title-tape section-title-tape-left"></span>
+  <span class="section-title-tape section-title-tape-right"></span>
+  <h2 class="section-title-text">{title}</h2>
+</div>
+
+<style is:global>
+  .section-title-wrap {
+    display: inline-block;
+    position: relative;
+    background: var(--bg);
+    padding: var(--pad);
+    transform: rotate(var(--rotate));
+    margin-bottom: 48px;
+    box-shadow: 2px 2px 6px rgba(var(--color-text-rgb), 0.12);
+  }
+
+  .section-title-tape {
+    position: absolute;
+    width: 32px;
+    height: 12px;
+    background: var(--tape);
+    top: -5px;
+  }
+
+  .section-title-tape-left  { left: 12px;  transform: rotate(-2deg); }
+  .section-title-tape-right { right: 12px; transform: rotate(2deg); }
+
+  .section-title-text {
+    font-family: 'Caveat', cursive;
+    font-size: var(--fs);
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1;
+    position: relative;
+    z-index: 1;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.15);
+  }
+</style>

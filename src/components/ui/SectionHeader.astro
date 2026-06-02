@@ -1,0 +1,93 @@
+---
+interface Props{
+    label: string;
+    title: string;
+    align?: 'left' | 'center' | 'right';
+    labelColor?: 'red' | 'gold' | 'green';
+    bgNum?: string;
+}
+
+const {
+    label,
+    title,
+    align = 'left',
+    labelColor = 'red',
+    bgNum
+} = Astro.props;
+---
+
+<div class={`section-header align-${align}`}>
+    {bgNum && <span class="bg-num">{bgNum}</span>}
+    <p class={`section-label label-${labelColor}`}>{label}</p>
+    <h2 class="section-title">{title}</h2>
+</div>
+
+<style>
+  .section-header {
+    position: relative;
+    margin-bottom: 48px;
+  }
+
+  .align-center {
+    text-align: center;
+  }
+
+  .bg-num {
+    position: absolute;
+    right: 0;
+    top: -20px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 10rem;
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+    color: rgba(var(--color-accent-rgb),0.08);
+  }
+  [data-theme="dark"] .bg-num {
+    color: rgba(var(--color-accent-rgb), 0.06);
+  }
+
+  .section-label {
+    font-family: 'Inconsolata', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .align-center .section-label {
+    justify-content: center;
+  }
+
+  .section-label::after {
+    content: '';
+    height: 1px;
+    width: 60px;
+    display: block;
+  }
+
+  .align-center .section-label::after {
+    display: none;
+  }
+
+  .label-red   { color: var(--color-danger); }
+  .label-red::after   { background: var(--color-danger); opacity: 0.3; }
+
+  .label-gold  { color: var(--color-accent); }
+  .label-gold::after  { background: var(--color-accent); opacity: 0.3; }
+
+  .label-green { color: var(--color-accent-2); }
+  .label-green::after { background: var(--color-accent-2); opacity: 0.3; }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    font-style: italic;
+    color: var(--color-text);
+    line-height: 1.1;
+  }
+</style>
