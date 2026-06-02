@@ -96,6 +96,15 @@ const { category } = Astro.props;
   }
 
   /* ── RESPONSIVE ──────────────────────────────────── */
-  @media (max-width: 768px) {
-    .grid-bannieres {
-      grid-template-columns: repeat(auto-fill, minmax(15
+@media (max-width: 768px) {
+  .grid-bannieres {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px;
+  }
+
+  .grid-emails,
+  .grid-sites,
+  .grid-jeux {
+    grid-template-columns: 1fr;
+  }
+}
