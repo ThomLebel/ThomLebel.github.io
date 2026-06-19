@@ -25,6 +25,8 @@ import TornCard from './ui/TornCard.astro';
       textColor="var(--color-surface)"
       fontSize="1.2rem"
       padding="10px 28px"
+      i18nKey="hero.badge"
+      i18nEn="Available for projects"
     />
 
     <div class="hero-name">
@@ -35,20 +37,20 @@ import TornCard from './ui/TornCard.astro';
           <path d="M2,14 C40,6 80,18 120,10 C160,2 200,16 240,8 C270,3 290,12 298,14" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round"/>
         </svg>
       </span>
-      <p class="hero-role">
+      <p class="hero-role" data-i18n="hero.role" data-fr="Intégrateur HTML5 · Bannières GSAP · Emailing MJML" data-en="HTML5 Integrator · GSAP Banners · MJML Emailing">
         Intégrateur HTML5 · Bannières GSAP · Emailing MJML
       </p>
     </div>
 
-    <p class="hero-desc">
+    <p class="hero-desc" data-i18n="hero.desc" data-fr="Dix ans à concevoir des expériences digitales pour Air France, Orange, ENGIE, Peugeot, La Poste. Freelance depuis 2021, fondateur de Bonaventure Studio." data-en="Ten years crafting digital experiences for Air France, Orange, ENGIE, Peugeot, La Poste. Freelance since 2021, founder of Bonaventure Studio.">
       Dix ans à concevoir des expériences digitales pour Air France,
       Orange, ENGIE, Peugeot, La Poste. Freelance depuis 2021,
       fondateur de Bonaventure Studio.
     </p>
 
     <div class="cta-row">
-      <Button text="Voir les projets" href="#realisations" />
-      <Button text="Prendre contact →" href="#contact" variant="ghost" />
+      <Button text="Voir les projets" href="#realisations" i18nKey="hero.cta.projects" i18nEn="See projects" />
+      <Button text="Prendre contact →" href="#contact" variant="ghost" i18nKey="hero.cta.contact" i18nEn="Get in touch →" />
     </div>
 
   </div>
@@ -66,26 +68,26 @@ import TornCard from './ui/TornCard.astro';
 
     <!-- Torn card stats -->
     <TornCard rotate={1} width="320px">
-      <p class="torn-label">— Données —</p>
+      <p class="torn-label" data-i18n="hero.stat.label" data-fr="— Données —" data-en="— Stats —">— Données —</p>
       <div class="torn-stat">
-        <span class="torn-key">Expérience</span>
-        <span class="torn-val">10 ans</span>
+        <span class="torn-key" data-i18n="hero.stat.exp.key" data-fr="Expérience" data-en="Experience">Expérience</span>
+        <span class="torn-val" data-i18n="hero.stat.exp.val" data-fr="10 ans" data-en="10 years">10 ans</span>
       </div>
       <div class="torn-stat">
-        <span class="torn-key">Projets</span>
-        <span class="torn-val">17+</span>
+        <span class="torn-key" data-i18n="hero.stat.proj.key" data-fr="Projets" data-en="Projects">Projets</span>
+        <span class="torn-val" data-i18n="hero.stat.proj.val" data-fr="17+" data-en="17+">17+</span>
       </div>
       <div class="torn-stat">
-        <span class="torn-key">Grands comptes</span>
-        <span class="torn-val">8+</span>
+        <span class="torn-key" data-i18n="hero.stat.big.key" data-fr="Grands comptes" data-en="Major clients">Grands comptes</span>
+        <span class="torn-val" data-i18n="hero.stat.big.val" data-fr="8+" data-en="8+">8+</span>
       </div>
       <div class="torn-stat">
-        <span class="torn-key">Stack</span>
+        <span class="torn-key" data-i18n="hero.stat.stack.key" data-fr="Stack" data-en="Stack">Stack</span>
         <span class="torn-val torn-val-sm">HTML5 · GSAP · MJML · Webflow · Astro</span>
       </div>
       <div class="avail-badge">
         <span class="avail-dot"></span>
-        Disponible
+        <span data-i18n="hero.avail" data-fr="Disponible" data-en="Available">Disponible</span>
       </div>
     </TornCard>
 

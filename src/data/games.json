@@ -3,15 +3,31 @@
     "name": "marbleous",
     "title": "Marbleous!",
     "description": "Un jeu de billes casual et coloré — vise, charge et lance des billes pour les faire fusionner !",
+    "descriptionEn": "A casual and colorful marble game — aim, charge and shoot marbles to merge them!",
     "platforms": [
       { "id": "android", "label": "Android", "url": "https://play.google.com/store/apps/details?id=com.bonaventure.marbleous" },
-      { "id": "ios", "label": "iOS", "url": "https://apps.apple.com/fr/app/marbleous/id6755726542" },
-      { "id": "web", "label": "Web", "url": "https://bonaventurestudio.itch.io/marbleous" }
+      { "id": "ios",     "label": "iOS",     "url": "https://apps.apple.com/fr/app/marbleous/id6755726542" },
+      { "id": "web",     "label": "Web",     "url": "https://bonaventurestudio.itch.io/marbleous" }
     ],
     "images": [
       "games/marbleous/logo.jpg",
       "games/marbleous/leaderboard.png",
       "games/marbleous/game.png"
+    ],
+    "url": "https://bonaventure.games"
+  },
+  {
+    "name": "otaquiz",
+    "title": "Ota'Quiz",
+    "description": "Un quiz en ligne sur des thématiques Pop Culture pour se défier entre amis !",
+    "descriptionEn": "An online quiz on pop culture topics to challenge your friends!",
+    "platforms": [
+      { "id": "web", "label": "Web", "url": "https://thomlebel.github.io/quiz-geek/" }
+    ],
+    "images": [
+      "games/otaquiz/otaquiz_room.png",
+      "games/otaquiz/otaquiz_setup.png",
+      "games/otaquiz/otaquiz_question.png"
     ],
     "url": "https://bonaventure.games"
   }

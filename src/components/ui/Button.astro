@@ -5,6 +5,8 @@ interface Props{
     variant?: 'primary' | 'ghost';
     rotate?: number;
     target?: '_blank' | '_self';
+    i18nKey?: string;
+    i18nEn?: string;
 }
 
 const {
@@ -12,13 +14,23 @@ const {
     href,
     variant = 'primary',
     rotate = 0,
-    target = '_self'
+    target = '_self',
+    i18nKey,
+    i18nEn
 } = Astro.props;
 
 const style = rotate !== 0 ? `transform: rotate(${rotate}deg)` : '';
 ---
 
-<a href={href} target={target} class={`btn btn-${variant}`} style={style}>
+<a
+  href={href}
+  target={target}
+  class={`btn btn-${variant}`}
+  style={style}
+  data-i18n={i18nKey}
+  data-fr={i18nKey ? text : undefined}
+  data-en={i18nEn}
+>
     {text}
 </a>
 

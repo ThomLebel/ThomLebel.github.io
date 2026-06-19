@@ -7,32 +7,40 @@ const categories = [
   {
     category: 'bannieres',
     title: 'Bannières HTML5',
+    titleEn: 'HTML5 Banners',
     icon: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="1"/><path d="M8 21h8M12 17v4"/></svg>`,
     description: 'Bannières animées pour grands comptes — GSAP, HTML5, motion design.',
+    descriptionEn: 'Animated banners for major brands — GSAP, HTML5, motion design.',
     tags: ['HTML5', 'GSAP', 'JavaScript', 'After Effects'],
     index: 0,
   },
   {
     category: 'emails',
     title: 'Emailing MJML',
+    titleEn: 'MJML Emailing',
     icon: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>`,
     description: 'Templates responsive — MJML, Actito, Brevo, compatibles tous clients.',
+    descriptionEn: 'Responsive templates — MJML, Actito, Brevo, cross-client compatible.',
     tags: ['MJML', 'Actito', 'Brevo', 'Responsive'],
     index: 1,
   },
   {
     category: 'sites',
     title: 'Sites & Landings',
+    titleEn: 'Sites & Landings',
     icon: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><path d="M2 12h20"/></svg>`,
     description: 'Sites vitrines, landing pages — Webflow, Astro, intégration CMS.',
+    descriptionEn: 'Showcase sites, landing pages — Webflow, Astro, CMS integration.',
     tags: ['Webflow', 'Astro', 'CSS', 'Drupal', 'WordPress'],
     index: 2,
   },
   {
     category: 'jeux',
     title: 'Jeux Vidéo',
+    titleEn: 'Video Games',
     icon: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 12h4M8 10v4M15 11h.01M17 13h.01"/></svg>`,
     description: 'Jeux indépendants — Bonaventure Studio, Godot, mobile et web.',
+    descriptionEn: 'Indie games — Bonaventure Studio, Godot, mobile and web.',
     tags: ['Godot', 'GDScript', 'Blender', 'Mobile'],
     index: 3,
   },
@@ -58,6 +66,8 @@ const titleMap: Record<string, string> = {
       textColor="var(--color-surface)"
       fontSize="2.5rem"
       padding="10px 28px"
+      i18nKey="real.title"
+      i18nEn="Playground"
     />
   </div>
 
@@ -66,12 +76,14 @@ const titleMap: Record<string, string> = {
 
     <!-- Cartes flottantes -->
     <div class="floating-zone" id="floating-zone">
-      {categories.map(({ category, title, icon, description, tags, index }) => (
+      {categories.map(({ category, title, titleEn, icon, description, descriptionEn, tags, index }) => (
         <FloatingCard
           category={category}
           title={title}
+          titleEn={titleEn}
           icon={icon}
           description={description}
+          descriptionEn={descriptionEn}
           tags={tags}
           index={index}
         />
@@ -80,7 +92,7 @@ const titleMap: Record<string, string> = {
 
     <!-- Zone d'expansion -->
     <div class="expansion-zone" id="expansion-zone" aria-hidden="true">
-      <button class="close-btn" id="close-btn" aria-label="Fermer">
+      <button class="close-btn" id="close-btn" aria-label="Fermer" data-i18n="real.close" data-fr="← Retour" data-en="← Back">
         ← Retour
       </button>
       <div class="expansion-border" id="expansion-border"></div>

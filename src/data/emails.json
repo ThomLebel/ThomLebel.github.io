@@ -3,18 +3,21 @@
     "name": "newsletter",
     "label": "Newsletter",
     "description": "The Brief — Tendances digitales",
+    "descriptionEn": "The Brief — Digital trends",
     "stack": ["MJML", "Responsive"]
   },
   {
     "name": "onboarding",
     "label": "Onboarding",
     "description": "Bienvenue — Email d'activation",
+    "descriptionEn": "Welcome — Activation email",
     "stack": ["MJML", "Transactionnel"]
   },
   {
     "name": "promo",
     "label": "Promotionnel",
     "description": "Soldes — Campagne e-commerce",
+    "descriptionEn": "Sale — E-commerce campaign",
     "stack": ["MJML", "Marketing"]
   }
 ]

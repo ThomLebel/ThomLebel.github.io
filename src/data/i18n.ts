@@ -1,0 +1,97 @@
+export const translations = {
+  fr: {
+    // Hero
+    'hero.badge':         'Disponible pour mission',
+    'hero.role':          'Intégrateur HTML5 · Bannières GSAP · Emailing MJML',
+    'hero.desc':          'Dix ans à concevoir des expériences digitales pour Air France, Orange, ENGIE, Peugeot, La Poste. Freelance depuis 2021, fondateur de Bonaventure Studio.',
+    'hero.cta.projects':  'Voir les projets',
+    'hero.cta.contact':   'Prendre contact →',
+    // TornCard stats
+    'hero.stat.label':    '— Données —',
+    'hero.stat.exp.key':  'Expérience',
+    'hero.stat.exp.val':  '10 ans',
+    'hero.stat.proj.key': 'Projets',
+    'hero.stat.proj.val': '17+',
+    'hero.stat.big.key':  'Grands comptes',
+    'hero.stat.big.val':  '8+',
+    'hero.stat.stack.key':'Stack',
+    'hero.avail':         'Disponible',
+    // Réalisations
+    'real.title':         'Terrain de jeu',
+    'real.cat.bannieres.title': 'Bannières HTML5',
+    'real.cat.bannieres.desc':  'Bannières animées pour grands comptes — GSAP, HTML5, motion design.',
+    'real.cat.emails.title':    'Emailing MJML',
+    'real.cat.emails.desc':     'Templates responsive — MJML, Actito, Brevo, compatibles tous clients.',
+    'real.cat.sites.title':     'Sites & Landings',
+    'real.cat.sites.desc':      'Sites vitrines, landing pages — Webflow, Astro, intégration CMS.',
+    'real.cat.jeux.title':      'Jeux Vidéo',
+    'real.cat.jeux.desc':       'Jeux indépendants — Bonaventure Studio, Godot, mobile et web.',
+    'real.hint':                'Explorer →',
+    'real.close':               '← Retour',
+    // Contact
+    'contact.title':      'Me trouver',
+    'contact.email.label':'Me contacter',
+    'contact.email.sub':  'Répond sous 24h',
+    'contact.linkedin.label': 'LinkedIn',
+    'contact.linkedin.val':   'Profil pro',
+    'contact.malt.label': 'Malt',
+    'contact.malt.val':   'Freelance',
+    'contact.cv.label':   'Curriculum Vitae',
+    'contact.cv.val':     '↓ Télécharger',
+    'contact.studio.label':'Studio de jeux vidéo',
+    'contact.studio.val': 'Bonaventure Studio',
+    // Footer
+    'footer.copy':        '© Thomas Lebel — Tous droits réservés',
+    'footer.link.contact':'Contact',
+    'footer.link.studio': 'Studio',
+  },
+  en: {
+    // Hero
+    'hero.badge':         'Available for projects',
+    'hero.role':          'HTML5 Integrator · GSAP Banners · MJML Emailing',
+    'hero.desc':          'Ten years crafting digital experiences for Air France, Orange, ENGIE, Peugeot, La Poste. Freelance since 2021, founder of Bonaventure Studio.',
+    'hero.cta.projects':  'See projects',
+    'hero.cta.contact':   'Get in touch →',
+    // TornCard stats
+    'hero.stat.label':    '— Stats —',
+    'hero.stat.exp.key':  'Experience',
+    'hero.stat.exp.val':  '10 years',
+    'hero.stat.proj.key': 'Projects',
+    'hero.stat.proj.val': '17+',
+    'hero.stat.big.key':  'Major clients',
+    'hero.stat.big.val':  '8+',
+    'hero.stat.stack.key':'Stack',
+    'hero.avail':         'Available',
+    // Réalisations
+    'real.title':         'Playground',
+    'real.cat.bannieres.title': 'HTML5 Banners',
+    'real.cat.bannieres.desc':  'Animated banners for major brands — GSAP, HTML5, motion design.',
+    'real.cat.emails.title':    'MJML Emailing',
+    'real.cat.emails.desc':     'Responsive templates — MJML, Actito, Brevo, cross-client compatible.',
+    'real.cat.sites.title':     'Sites & Landings',
+    'real.cat.sites.desc':      'Showcase sites, landing pages — Webflow, Astro, CMS integration.',
+    'real.cat.jeux.title':      'Video Games',
+    'real.cat.jeux.desc':       'Indie games — Bonaventure Studio, Godot, mobile and web.',
+    'real.hint':                'Explore →',
+    'real.close':               '← Back',
+    // Contact
+    'contact.title':      'Find me',
+    'contact.email.label':'Get in touch',
+    'contact.email.sub':  'Replies within 24h',
+    'contact.linkedin.label': 'LinkedIn',
+    'contact.linkedin.val':   'Pro profile',
+    'contact.malt.label': 'Malt',
+    'contact.malt.val':   'Freelance',
+    'contact.cv.label':   'Curriculum Vitae',
+    'contact.cv.val':     '↓ Download',
+    'contact.studio.label':'Indie game studio',
+    'contact.studio.val': 'Bonaventure Studio',
+    // Footer
+    'footer.copy':        '© Thomas Lebel — All rights reserved',
+    'footer.link.contact':'Contact',
+    'footer.link.studio': 'Studio',
+  }
+} as const;
+
+export type Lang = keyof typeof translations;
+export type TranslationKey = keyof typeof translations['fr'];

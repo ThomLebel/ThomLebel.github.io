@@ -2,13 +2,15 @@
 interface Props {
   category: 'bannieres' | 'emails' | 'sites' | 'jeux';
   title: string;
+  titleEn?: string;
   icon: string;
   description: string;
+  descriptionEn?: string;
   tags: readonly string[];
   index: number;
 }
 
-const { category, title, icon, description, tags, index } = Astro.props;
+const { category, title, titleEn, icon, description, descriptionEn, tags, index } = Astro.props;
 
 const tabColors: Record<string, string> = {
   bannieres: '#C4501A',
@@ -30,7 +32,7 @@ const tabColor = tabColors[category];
   <!-- Dos du dossier (toujours visible) -->
   <div class="folder-back">
     <div class="folder-tab">
-      <span class="folder-tab-label">{title}</span>
+      <span class="folder-tab-label" data-i18n={`real.cat.${category}.title`} data-fr={title} data-en={titleEn}>{title}</span>
     </div>
   </div>
 
@@ -43,8 +45,8 @@ const tabColor = tabColors[category];
   <div class="folder-cover">
     <div class="folder-content">
       <div class="folder-icon" set:html={icon}></div>
-      <h3 class="folder-title">{title}</h3>
-      <p class="folder-desc">{description}</p>
+      <h3 class="folder-title" data-i18n={`real.cat.${category}.title`} data-fr={title} data-en={titleEn}>{title}</h3>
+      <p class="folder-desc" data-i18n={`real.cat.${category}.desc`} data-fr={description} data-en={descriptionEn}>{description}</p>
       <div class="folder-tags">
         {tags.map((tag, i) => (
           <span class="folder-tag">
@@ -53,7 +55,7 @@ const tabColor = tabColors[category];
           </span>
         ))}
       </div>
-      <span class="folder-hint">Explorer →</span>
+      <span class="folder-hint" data-i18n="real.hint" data-fr="Explorer →" data-en="Explore →">Explorer →</span>
     </div>
   </div>
 
@@ -201,6 +203,9 @@ const tabColor = tabColors[category];
   font-weight: 700;
   color: var(--color-accent);
   letter-spacing: 0.04em;
+}
+[data-theme="dark"] .folder-tag{
+  color: var(--color-danger);
 }
 
 .tag-sep { opacity: 0.4; }

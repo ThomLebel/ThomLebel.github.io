@@ -4,6 +4,7 @@ interface Props {
     name: string;
     label: string;
     description: string;
+    descriptionEn?: string;
     stack: string[];
   };
 }
@@ -20,12 +21,12 @@ const { email } = Astro.props;
       title={email.label}
     ></iframe>
     <div class="email-overlay">
-      <p class="email-cta">Voir le template →</p>
+      <p class="email-cta" data-i18n="card.email.cta" data-fr="Voir le template →" data-en="View template →">Voir le template →</p>
     </div>
   </div>
   <div class="email-meta">
     <span class="email-label">{email.label}</span>
-    <span class="email-desc">{email.description}</span>
+    <span class="email-desc" data-i18n={`email.${email.name}.desc`} data-fr={email.description} data-en={email.descriptionEn}>{email.description}</span>
     <div class="email-tags">
       {email.stack.map((tag, i) => (
         <span class="email-tag">

@@ -3,6 +3,7 @@
     "name": "restaurant-demo",
     "label": "L'Arôme",
     "description": "Site restaurant gastronomique",
+    "descriptionEn": "Gastronomic restaurant website",
     "stack": ["Webflow", "Interactions"],
     "url": "https://restaurant-demo-61196d.webflow.io",
     "thumbs": [
@@ -14,6 +15,7 @@
     "name": "atelier-moreau",
     "label": "Atelier Moreau",
     "description": "Site vitrine architecte",
+    "descriptionEn": "Architect showcase website",
     "stack": ["Webflow", "Interactions"],
     "url": "https://atelier-moreau.webflow.io",
     "thumbs": [
@@ -25,6 +27,7 @@
     "name": "bonaventure-studio",
     "label": "Bonaventure Studio",
     "description": "Site studio de jeux vidéo indépendant",
+    "descriptionEn": "Indie game studio website",
     "stack": ["WordPress", "Astra"],
     "url": "https://bonaventure.games",
     "thumbs": [

@@ -10,6 +10,7 @@ interface Props {
     name: string;
     title: string;
     description: string;
+    descriptionEn?: string;
     platforms: Platform[];
     images: string[];
     url: string;
@@ -53,7 +54,7 @@ const platformIcons: Record<string, string> = {
   <!-- Infos -->
   <div class="game-info">
     <h3 class="game-title">{game.title}</h3>
-    <p class="game-desc">{game.description}</p>
+    <p class="game-desc" data-i18n={`game.${game.name}.desc`} data-fr={game.description} data-en={game.descriptionEn}>{game.description}</p>
     <div class="game-platforms">
         {game.platforms.map(p => (
             <a
@@ -67,7 +68,7 @@ const platformIcons: Record<string, string> = {
             </a>
         ))}
     </div>
-    <a href={game.url} target="_blank" rel="noopener noreferrer" class="game-link">
+    <a href={game.url} target="_blank" rel="noopener noreferrer" class="game-link" data-i18n="card.game.link" data-fr="Voir le studio →" data-en="View studio →">
       Voir le studio →
     </a>
   </div>
@@ -101,7 +102,8 @@ const platformIcons: Record<string, string> = {
     background: var(--color-surface);
     border: 1px solid var(--color-border-hi);
     position: relative;
-    max-width: 240px;
+    max-width: 360px;
+    width: 100%;
     margin: 0 auto;
   }
 

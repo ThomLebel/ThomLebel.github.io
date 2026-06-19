@@ -4,6 +4,7 @@ interface Props {
     name: string;
     label: string;
     description: string;
+    descriptionEn?: string;
     stack: string[];
     url: string;
     thumbs: string[];
@@ -34,7 +35,7 @@ const { site } = Astro.props;
         class="site-thumb site-thumb-hover"
       />
       <div class="site-overlay">
-        <p class="site-cta">Voir le site →</p>
+        <p class="site-cta" data-i18n="card.site.cta" data-fr="Voir le site →" data-en="View site →">Voir le site →</p>
       </div>
     </div>
     <div class="site-meta">
@@ -42,7 +43,7 @@ const { site } = Astro.props;
         <span class="site-label">{site.label}</span>
         <span class="site-arrow">↗</span>
       </div>
-      <span class="site-desc">{site.description}</span>
+      <span class="site-desc" data-i18n={`site.${site.name}.desc`} data-fr={site.description} data-en={site.descriptionEn}>{site.description}</span>
       <div class="site-tags">
         {site.stack.map((tag, i) => (
           <span class="site-tag">
